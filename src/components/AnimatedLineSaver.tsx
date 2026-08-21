@@ -22,10 +22,10 @@ export function AnimatedLineSaver() {
             <svg viewBox="0 0 1660 900" preserveAspectRatio="none" role="presentation">
                 <defs>
                     <linearGradient id="line-glow" x1="0" y1="0" x2="1" y2="0">
-                        <stop offset="0" stopColor="#ff2525" stopOpacity="0" />
-                        <stop offset="0.4" stopColor="#ff4a4a" stopOpacity="0.9" />
-                        <stop offset="0.7" stopColor="#ffb3a8" stopOpacity="0.8" />
-                        <stop offset="1" stopColor="#ff2525" stopOpacity="0" />
+                        <stop offset="0" stopColor="#C70111" stopOpacity="0" />
+                        <stop offset="0.35" stopColor="#C70111" stopOpacity="0.9" />
+                        <stop offset="0.65" stopColor="#f87171" stopOpacity="0.85" />
+                        <stop offset="1" stopColor="#A71F2C" stopOpacity="0" />
                     </linearGradient>
                     <filter id="line-blur" x="-20%" y="-20%" width="140%" height="140%">
                         <feGaussianBlur stdDeviation="2.5" />

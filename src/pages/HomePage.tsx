@@ -221,7 +221,7 @@ export function HomePage() {
 
             {/* Why choose us */}
             <section className="relative overflow-hidden bg-slate-950 py-20 lg:py-28">
-                <div className="absolute inset-0 bg-[radial-gradient(800px_400px_at_10%_20%,rgba(20,184,166,0.15),transparent)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(800px_400px_at_10%_20%,rgba(167,31,44,0.15),transparent)]" />
                 <div className="container-page relative">
                     <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
                         <Reveal>

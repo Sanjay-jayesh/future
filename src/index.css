@@ -92,9 +92,9 @@
 
 .hero-gradient {
     background:
-        radial-gradient(1200px 600px at 80% -10%, rgba(51, 137, 252, 0.18), transparent),
-        radial-gradient(900px 500px at 0% 30%, rgba(20, 184, 166, 0.12), transparent),
-        linear-gradient(180deg, #0b1d44 0%, #13265a 60%, #193c8e 100%);
+        radial-gradient(1200px 600px at 80% -10%, rgba(199, 1, 17, 0.22), transparent),
+        radial-gradient(900px 500px at 0% 30%, rgba(148, 0, 0, 0.15), transparent),
+        linear-gradient(180deg, #2a0508 0%, #3d0a0c 60%, #5a1010 100%);
 }
 
 .line-saver {

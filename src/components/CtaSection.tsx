@@ -14,7 +14,7 @@ export function CtaSection({
     return (
         <section className="relative overflow-hidden bg-brand-700 py-20 lg:py-24">
             <div className="absolute inset-0 bg-[radial-gradient(800px_400px_at_20%_20%,rgba(255,255,255,0.12),transparent)]" />
-            <div className="absolute inset-0 bg-[radial-gradient(600px_300px_at_80%_80%,rgba(20,184,166,0.2),transparent)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(600px_300px_at_80%_80%,rgba(167,31,44,0.2),transparent)]" />
             <div className="container-page relative text-center">
                 <h2 className="mx-auto max-w-2xl text-3xl font-bold text-white sm:text-4xl lg:text-5xl">{title}</h2>
                 <p className="mx-auto mt-5 max-w-xl text-lg text-brand-100">{subtitle}</p>

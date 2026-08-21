@@ -67,7 +67,7 @@ export function Navbar() {
                             href={`https://wa.me/${site.whatsapp}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hidden items-center gap-2 rounded-full bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:bg-teal-700 hover:-translate-y-0.5 sm:inline-flex"
+                            className="hidden items-center gap-2 rounded-full bg-green-600 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:bg-green-700 hover:-translate-y-0.5 sm:inline-flex"
                         >
                             <MessageCircle className="h-4 w-4" /> WhatsApp
                         </a>

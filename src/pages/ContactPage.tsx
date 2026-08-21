@@ -49,7 +49,7 @@ export function ContactPage() {
                             href={`https://wa.me/${site.whatsapp}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="mt-6 flex items-center justify-center gap-2 rounded-2xl bg-teal-600 px-6 py-4 text-white shadow-lg shadow-teal-600/25 transition-all hover:bg-teal-700 hover:-translate-y-0.5"
+                            className="mt-6 flex items-center justify-center gap-2 rounded-2xl bg-green-600 px-6 py-4 text-white shadow-lg shadow-green-600/25 transition-all hover:bg-green-700 hover:-translate-y-0.5"
                         >
                             <MessageCircle className="h-5 w-5" /> Chat on WhatsApp now
                         </a>

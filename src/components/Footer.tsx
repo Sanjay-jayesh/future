@@ -103,7 +103,7 @@ export function Footer() {
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-3 transition-colors hover:text-white"
                                 >
-                                    <MessageCircle className="h-4 w-4 shrink-0 text-teal-400" />
+                                    <MessageCircle className="h-4 w-4 shrink-0 text-green-400" />
                                     Chat on WhatsApp
                                 </a>
                             </li>
