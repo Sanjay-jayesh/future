@@ -1,222 +1,196 @@
 import { useState } from 'react';
-import { CheckCircle2, Loader2, AlertCircle, Send, MessageCircle } from 'lucide-react';
-import { useEnquiryForm } from '@/hooks/useEnquiryForm';
-import { site } from '@/data/site';
+import type { FormEvent } from 'react';
+import { supabase } from '@/lib/supabase';
+import { Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface EnquiryFormProps {
-    leadType?: 'enquiry' | 'consultation';
     compact?: boolean;
     title?: string;
     subtitle?: string;
 }
 
-const countryOptions = ['Georgia', 'Uzbekistan', 'Europe', 'UK'];
-const courseOptions = [
-    'Medicine (MD)',
-    'Dentistry (DDS)',
-    'Computer Science',
-    'Engineering',
-    'Business Administration',
-    'Pharmacy',
-    'Nursing',
-    'Other',
-];
-
-export function EnquiryForm({
-    leadType = 'enquiry',
-    compact = false,
-    title = 'Quick Enquiry',
-    subtitle = 'Fill in your details and we will get back to you within 24 hours.',
-}: EnquiryFormProps) {
-    const { status, error, submit } = useEnquiryForm();
-    const [form, setForm] = useState({
-        name: '',
+export default function EnquiryForm({ compact = false, title, subtitle }: EnquiryFormProps) {
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+    const [formData, setFormData] = useState({
+        full_name: '',
         email: '',
         phone: '',
-        countryOfInterest: '',
-        courseInterest: '',
+        country_of_interest: '',
+        course_interest: '',
         message: '',
-        preferredDate: '',
     });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        await submit({
-            name: form.name,
-            email: form.email,
-            phone: form.phone,
-            countryOfInterest: form.countryOfInterest,
-            courseInterest: form.courseInterest,
-            message: form.message,
-            preferredDate: form.preferredDate || undefined,
-            leadType,
-        });
+        setStatus('loading');
+        try {
+            const { error } = await supabase.from('enquiries').insert([formData]);
+            if (error) throw error;
+            setStatus('success');
+            setFormData({ full_name: '', email: '', phone: '', country_of_interest: '', course_interest: '', message: '' });
+        } catch {
+            setStatus('error');
+        }
     };
 
-    if (status === 'success') {
-        return (
-            <div className="flex flex-col items-center justify-center rounded-2xl border border-brand-200 bg-brand-50 p-8 text-center">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand-100">
-                    <CheckCircle2 className="h-7 w-7 text-brand-600" />
-                </div>
-                <h3 className="mb-2 text-xl font-bold text-slate-900">Thank you, {form.name.split(' ')[0]}!</h3>
-                <p className="mb-5 max-w-sm text-sm text-slate-600">
-                    Your enquiry has been prepared in WhatsApp. Please press send in the WhatsApp window that just opened so we
-                    can respond to you immediately. We will get back to you within 24 hours.
-                </p>
-                <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                    <MessageCircle className="h-4 w-4" /> Open WhatsApp again
-                </a>
-            </div>
-        );
-    }
-
     return (
-        <form
-            onSubmit={handleSubmit}
-            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
-            aria-label="Enquiry form"
-        >
-            {!compact && (
-                <div className="mb-6">
-                    <h3 className="text-xl font-bold text-slate-900">{title}</h3>
-                    <p className="mt-1 text-sm text-slate-500">{subtitle}</p>
-                </div>
-            )}
-            <div className="space-y-4">
-                <div className="grid gap-4 sm:grid-cols-2">
-                    <Field label="Full name" required>
-                        <input
-                            type="text"
-                            name="name"
-                            required
-                            value={form.name}
-                            onChange={handleChange}
-                            placeholder="Your name"
-                            className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
-                        />
-                    </Field>
-                    <Field label="Phone / WhatsApp" required>
-                        <input
-                            type="tel"
-                            name="phone"
-                            required
-                            value={form.phone}
-                            onChange={handleChange}
-                            placeholder="+91 98765 43210"
-                            className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
-                        />
-                    </Field>
-                </div>
-                <Field label="Email" required>
-                    <input
-                        type="email"
-                        name="email"
-                        required
-                        value={form.email}
-                        onChange={handleChange}
-                        placeholder="you@example.com"
-                        className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
-                    />
-                </Field>
-                <div className="grid gap-4 sm:grid-cols-2">
-                    <Field label="Country of interest">
-                        <select
-                            name="countryOfInterest"
-                            value={form.countryOfInterest}
-                            onChange={handleChange}
-                            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
+        <div className={`bg-white rounded-2xl shadow-xl border border-gray-100 p-6 sm:p-8 ${compact ? '' : 'max-w-lg mx-auto'}`}>
+            <AnimatePresence mode="wait">
+                {status === 'success' ? (
+                    <motion.div
+                        key="success"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                        className="text-center"
+                    >
+                        <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ delay: 0.15, type: 'spring', stiffness: 200, damping: 15 }}
+                            className="w-16 h-16 rounded-full bg-success-50 flex items-center justify-center mx-auto mb-4"
                         >
-                            <option value="">Select a country</option>
-                            {countryOptions.map((c) => (
-                                <option key={c} value={c}>
-                                    {c}
-                                </option>
-                            ))}
-                        </select>
-                    </Field>
-                    <Field label="Course interest">
-                        <select
-                            name="courseInterest"
-                            value={form.courseInterest}
-                            onChange={handleChange}
-                            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
-                        >
-                            <option value="">Select a course</option>
-                            {courseOptions.map((c) => (
-                                <option key={c} value={c}>
-                                    {c}
-                                </option>
-                            ))}
-                        </select>
-                    </Field>
-                </div>
-                {leadType === 'consultation' && (
-                    <Field label="Preferred consultation date">
-                        <input
-                            type="date"
-                            name="preferredDate"
-                            value={form.preferredDate}
-                            onChange={handleChange}
-                            className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-700 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
-                        />
-                    </Field>
+                            <CheckCircle2 className="w-8 h-8 text-success-500" />
+                        </motion.div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">Thank you!</h3>
+                        <p className="text-gray-600 mb-6">
+                            We've received your enquiry. One of our consultants will reach out to you within 24 hours.
+                        </p>
+                        <button onClick={() => setStatus('idle')} className="btn-secondary">
+                            Send another enquiry
+                        </button>
+                    </motion.div>
+                ) : (
+                    <motion.div
+                        key="form"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                    >
+                        {(title || subtitle) && (
+                            <div className="mb-6">
+                                {title && <h3 className="text-xl font-bold text-gray-900 mb-1">{title}</h3>}
+                                {subtitle && <p className="text-gray-500 text-sm">{subtitle}</p>}
+                            </div>
+                        )}
+                        <AnimatePresence>
+                            {status === 'error' && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    className="mb-4 p-3 rounded-lg bg-error-50 border border-error-200 flex items-center gap-2 text-sm text-error-700 overflow-hidden"
+                                >
+                                    <AlertCircle className="w-4 h-4 shrink-0" />
+                                    Something went wrong. Please try again or WhatsApp us directly.
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                        <form onSubmit={handleSubmit} className="space-y-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Full Name *</label>
+                                    <input
+                                        type="text"
+                                        required
+                                        value={formData.full_name}
+                                        onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
+                                        className="input-field"
+                                        placeholder="Your name"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Email *</label>
+                                    <input
+                                        type="email"
+                                        required
+                                        value={formData.email}
+                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                        className="input-field"
+                                        placeholder="you@email.com"
+                                    />
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Phone / WhatsApp</label>
+                                    <input
+                                        type="tel"
+                                        value={formData.phone}
+                                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                        className="input-field"
+                                        placeholder="+995 555 000 000"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Country of Interest</label>
+                                    <select
+                                        value={formData.country_of_interest}
+                                        onChange={(e) => setFormData({ ...formData, country_of_interest: e.target.value })}
+                                        className="input-field"
+                                    >
+                                        <option value="">Select...</option>
+                                        <option value="Georgia">Georgia</option>
+                                        <option value="Uzbekistan">Uzbekistan</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="Europe">Europe</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1.5">Course Interest</label>
+                                <select
+                                    value={formData.course_interest}
+                                    onChange={(e) => setFormData({ ...formData, course_interest: e.target.value })}
+                                    className="input-field"
+                                >
+                                    <option value="">Select...</option>
+                                    <option value="Medicine">Medicine (MD/MBBS)</option>
+                                    <option value="Dentistry">Dentistry</option>
+                                    <option value="Engineering">Engineering</option>
+                                    <option value="Business">Business & Management</option>
+                                    <option value="IT">IT & Computer Science</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1.5">Message</label>
+                                <textarea
+                                    value={formData.message}
+                                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                    rows={compact ? 3 : 4}
+                                    className="input-field resize-none"
+                                    placeholder="Tell us about your study goals..."
+                                />
+                            </div>
+                            <motion.button
+                                type="submit"
+                                disabled={status === 'loading'}
+                                whileHover={{ scale: status === 'loading' ? 1 : 1.01 }}
+                                whileTap={{ scale: status === 'loading' ? 1 : 0.98 }}
+                                className="btn-primary w-full disabled:opacity-60"
+                            >
+                                {status === 'loading' ? (
+                                    <>
+                                        <Loader2 className="w-5 h-5 animate-spin" />
+                                        Sending...
+                                    </>
+                                ) : (
+                                    <>
+                                        <Send className="w-4 h-4" />
+                                        Send Enquiry
+                                    </>
+                                )}
+                            </motion.button>
+                            <p className="text-xs text-gray-400 text-center">
+                                We'll respond within 24 hours. Your information is kept confidential.
+                            </p>
+                        </form>
+                    </motion.div>
                 )}
-                <Field label="Message">
-                    <textarea
-                        name="message"
-                        rows={3}
-                        value={form.message}
-                        onChange={handleChange}
-                        placeholder="Tell us about your goals, questions, or anything else..."
-                        className="w-full resize-none rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
-                    />
-                </Field>
-                {error && (
-                    <div className="flex items-center gap-2 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600">
-                        <AlertCircle className="h-4 w-4 shrink-0" />
-                        {error}
-                    </div>
-                )}
-                <button type="submit" disabled={status === 'submitting'} className="btn-primary w-full">
-                    {status === 'submitting' ? (
-                        <>
-                            <Loader2 className="h-4 w-4 animate-spin" /> Sending...
-                        </>
-                    ) : (
-                        <>
-                            <Send className="h-4 w-4" /> Send Enquiry
-                        </>
-                    )}
-                </button>
-                <p className="text-center text-xs text-slate-400">
-                    By submitting, you agree to be contacted by Future Factory. We never share your data.
-                </p>
-            </div>
-        </form>
-    );
-}
-
-function Field({
-    label,
-    required,
-    children,
-}: {
-    label: string;
-    required?: boolean;
-    children: React.ReactNode;
-}) {
-    return (
-        <label className="block">
-            <span className="mb-1.5 block text-sm font-medium text-slate-700">
-                {label}
-                {required && <span className="text-accent-500"> *</span>}
-            </span>
-            {children}
-        </label>
+            </AnimatePresence>
+        </div>
     );
 }

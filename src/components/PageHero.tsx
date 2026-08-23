@@ -1,61 +1,75 @@
 import { Link } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
-import { AnimatedLineSaver } from '@/components/AnimatedLineSaver';
+import { motion } from 'framer-motion';
 
 interface PageHeroProps {
-    eyebrow?: string;
+    label?: string;
     title: string;
     subtitle?: string;
-    image?: string;
-    breadcrumbs?: { label: string; path?: string }[];
-    children?: React.ReactNode;
+    image: string;
+    breadcrumb?: { label: string; to?: string }[];
 }
 
-export function PageHero({ eyebrow, title, subtitle, image, breadcrumbs, children }: PageHeroProps) {
+export default function PageHero({ label, title, subtitle, image, breadcrumb }: PageHeroProps) {
     return (
-        <section className="relative overflow-hidden bg-slate-950 pt-32 pb-20 lg:pt-40 lg:pb-28">
-            <div className="absolute inset-0">
-                <img
-                    src="/images/WhatsApp_Image_2026-07-30_at_11.56.57.jpeg"
-                    alt=""
-                    className="h-full w-full object-cover opacity-25"
-                    loading="eager"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-slate-950/75 via-slate-950/60 to-slate-950/85" />
-            </div>
-            {image && (
-                <div className="absolute inset-0">
-                    <img src={image} alt="" className="h-full w-full object-cover opacity-20" loading="eager" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/60" />
-                </div>
-            )}
-            <div className="absolute inset-0 bg-[radial-gradient(600px_300px_at_90%_0%,rgba(220,38,38,0.12),transparent)]" />
-            <AnimatedLineSaver />
+        <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-20 overflow-hidden">
+            <motion.div
+                initial={{ scale: 1.1 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-0"
+            >
+                <img src={image} alt="" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-b from-gray-950/80 via-gray-950/60 to-gray-950/70" />
+            </motion.div>
+
             <div className="container-page relative z-10">
-                {breadcrumbs && (
-                    <nav className="mb-5 flex items-center gap-1.5 text-sm text-slate-400" aria-label="Breadcrumb">
-                        {breadcrumbs.map((bc, i) => (
-                            <span key={i} className="flex items-center gap-1.5">
-                                {bc.path ? (
-                                    <Link to={bc.path} className="transition-colors hover:text-white">
-                                        {bc.label}
-                                    </Link>
+                {breadcrumb && (
+                    <motion.nav
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="flex items-center gap-2 text-sm text-white/70 mb-4"
+                    >
+                        {breadcrumb.map((item, i) => (
+                            <span key={i} className="flex items-center gap-2">
+                                {item.to ? (
+                                    <Link to={item.to} className="hover:text-white transition-colors">{item.label}</Link>
                                 ) : (
-                                    <span className="text-slate-300">{bc.label}</span>
+                                    <span className="text-white">{item.label}</span>
                                 )}
-                                {i < breadcrumbs.length - 1 && <ChevronRight className="h-3.5 w-3.5 text-slate-600" />}
+                                {i < breadcrumb.length - 1 && <span className="text-white/40">/</span>}
                             </span>
                         ))}
-                    </nav>
+                    </motion.nav>
                 )}
-                {eyebrow && (
-                    <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-300 ring-1 ring-inset ring-brand-500/30">
-                        {eyebrow}
-                    </span>
+                {label && (
+                    <motion.span
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                        className="section-label bg-white/10 text-white border border-white/20 mb-4 inline-flex"
+                    >
+                        {label}
+                    </motion.span>
                 )}
-                <h1 className="max-w-3xl text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">{title}</h1>
-                {subtitle && <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-300">{subtitle}</p>}
-                {children && <div className="mt-8">{children}</div>}
+                <motion.h1
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                    className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white text-shadow-lg max-w-3xl"
+                >
+                    {title}
+                </motion.h1>
+                {subtitle && (
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                        className="mt-5 text-lg text-white/85 text-shadow max-w-2xl leading-relaxed"
+                    >
+                        {subtitle}
+                    </motion.p>
+                )}
             </div>
         </section>
     );

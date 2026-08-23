@@ -1,203 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
     html {
-        -webkit-font-smoothing: antialiased;
         scroll-behavior: smooth;
     }
 
     body {
-        @apply bg-white text-slate-700 font-sans antialiased;
-        font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+        @apply font-sans bg-white text-gray-900 antialiased;
     }
 
     h1,
     h2,
     h3,
     h4,
-    h5 {
-        @apply font-display tracking-tight text-slate-900;
-    }
-
-    ::selection {
-        @apply bg-brand-200 text-brand-900;
+    h5,
+    h6 {
+        @apply font-display tracking-tight;
     }
 }
 
 @layer components {
     .container-page {
-        @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
     }
 
     .btn-primary {
-        @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition-all hover:bg-brand-700 hover:shadow-xl hover:shadow-brand-600/30 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600;
+        @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary-600 text-white font-semibold transition-all duration-300 hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-600/30 hover:-translate-y-0.5 active:translate-y-0;
     }
 
     .btn-secondary {
-        @apply inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-all hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700 hover:-translate-y-0.5;
+        @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white text-primary-700 font-semibold border-2 border-primary-200 transition-all duration-300 hover:border-primary-400 hover:bg-primary-50 hover:-translate-y-0.5 active:translate-y-0;
     }
 
     .btn-accent {
-        @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-500/30 transition-all hover:bg-accent-600 hover:-translate-y-0.5;
+        @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-secondary-500 text-white font-semibold transition-all duration-300 hover:bg-secondary-600 hover:shadow-lg hover:shadow-secondary-500/30 hover:-translate-y-0.5 active:translate-y-0;
     }
 
-    .btn-ghost {
-        @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition-all hover:bg-slate-100 hover:text-slate-900;
+    .btn-whatsapp {
+        @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#25D366] text-white font-semibold transition-all duration-300 hover:bg-[#1da851] hover:shadow-lg hover:shadow-green-500/30 hover:-translate-y-0.5 active:translate-y-0;
     }
 
     .card {
-        @apply rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-slate-200/60 hover:-translate-y-1;
+        @apply bg-white rounded-2xl shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-xl hover:border-primary-100;
     }
 
-    .section-eyebrow {
-        @apply inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-700;
+    .section-label {
+        @apply inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 text-primary-700 text-xs font-semibold uppercase tracking-wider;
     }
 
-    .prose-ff {
-        @apply text-slate-600 leading-relaxed;
+    .input-field {
+        @apply w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 transition-all duration-200 focus:outline-none focus:border-primary-400 focus:bg-white focus:ring-2 focus:ring-primary-100;
     }
 
-    .prose-ff p {
-        @apply mb-4 leading-relaxed text-slate-600;
+    .gradient-text {
+        @apply bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent;
     }
 
-    .prose-ff h2 {
-        @apply mb-3 mt-8 text-2xl font-bold text-slate-900;
-    }
-
-    .prose-ff h3 {
-        @apply mb-2 mt-6 text-xl font-bold text-slate-900;
-    }
-
-    .prose-ff ul {
-        @apply mb-4 space-y-2 pl-5;
-    }
-
-    .prose-ff li {
-        @apply list-disc text-slate-600;
-    }
-
-    .prose-ff strong {
-        @apply font-semibold text-slate-800;
+    .glass {
+        @apply bg-white/80 backdrop-blur-md border-b border-gray-100;
     }
 }
 
-.glass {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
-
-.hero-gradient {
-    background:
-        radial-gradient(1200px 600px at 80% -10%, rgba(199, 1, 17, 0.22), transparent),
-        radial-gradient(900px 500px at 0% 30%, rgba(148, 0, 0, 0.15), transparent),
-        linear-gradient(180deg, #2a0508 0%, #3d0a0c 60%, #5a1010 100%);
-}
-
-.line-saver {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    overflow: hidden;
-    pointer-events: none;
-    opacity: 0.88;
-    mix-blend-mode: screen;
-}
-
-.line-saver svg {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
-.line-saver-blur path,
-.line-saver-sharp path {
-    fill: none;
-    stroke: url(#line-glow);
-    stroke-linecap: round;
-}
-
-.line-saver-blur path {
-    stroke-width: 2.8;
-    stroke-dasharray: 0.1 0.9;
-    animation: lineFlow 15s linear infinite;
-}
-
-.line-saver-sharp path {
-    stroke-width: 0.8;
-    stroke-dasharray: 0.16 0.84;
-    animation: lineFlow 12s linear infinite;
-}
-
-.line-saver-sheen {
-    position: absolute;
-    inset: -30% -10%;
-    background: linear-gradient(115deg, transparent 38%, rgba(255, 70, 70, 0.08) 49%, rgba(255, 210, 195, 0.14) 50%, transparent 62%);
-    transform: translateX(-55%);
-    animation: sheenSweep 11s ease-in-out infinite;
-}
-
-@keyframes lineFlow {
-    0% {
-        stroke-dashoffset: 1;
-        opacity: 0.16;
+@layer utilities {
+    .text-shadow-lg {
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
     }
 
-    18% {
-        opacity: 0.9;
+    .text-shadow {
+        text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
     }
 
-    52% {
-        opacity: 0.62;
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 
-    100% {
-        stroke-dashoffset: -1;
-        opacity: 0.16;
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
     }
-}
-
-@keyframes sheenSweep {
-
-    0%,
-    18% {
-        transform: translateX(-55%);
-    }
-
-    62%,
-    100% {
-        transform: translateX(55%);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    .line-saver-blur path,
-    .line-saver-sharp path,
-    .line-saver-sheen {
-        animation: none;
-    }
-}
-
-.no-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-
-.no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-.reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
 }
