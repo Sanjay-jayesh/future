@@ -34,29 +34,29 @@ export default function About() {
                     <div className="grid lg:grid-cols-2 gap-12 items-start">
                         <Reveal variants={slideInLeft}>
                             <span className="section-label mb-4">Our Mission</span>
-                            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                                 Empowering Students to Learn Without Limits
                             </h2>
-                            <p className="text-gray-600 leading-relaxed mb-6">
+                            <p className="text-gray-400 leading-relaxed mb-6">
                                 We believe every student deserves access to quality education, regardless of where they're from.
                                 Our mission is to break down the barriers — financial, geographic, and informational — that prevent
                                 talented students from reaching their full potential.
                             </p>
-                            <p className="text-gray-600 leading-relaxed mb-6">
+                            <p className="text-gray-400 leading-relaxed mb-6">
                                 Since 2018, we've helped over 2,500 students from India, Nigeria, the UAE, Kenya, and beyond
                                 find their place at universities in Georgia, Uzbekistan, Europe, and the UK. We don't just place
                                 students — we stay with them throughout their journey.
                             </p>
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="card p-5">
-                                    <Target className="w-8 h-8 text-primary-600 mb-2" />
-                                    <h3 className="font-bold text-gray-900 mb-1">Our Mission</h3>
-                                    <p className="text-sm text-gray-600">Make global education accessible to every aspiring student.</p>
+                                    <Target className="w-8 h-8 text-primary-500 mb-2" />
+                                    <h3 className="font-bold text-white mb-1">Our Mission</h3>
+                                    <p className="text-sm text-gray-400">Make global education accessible to every aspiring student.</p>
                                 </div>
                                 <div className="card p-5">
-                                    <Eye className="w-8 h-8 text-accent-600 mb-2" />
-                                    <h3 className="font-bold text-gray-900 mb-1">Our Vision</h3>
-                                    <p className="text-sm text-gray-600">Be the world's most trusted study-abroad consultancy.</p>
+                                    <Eye className="w-8 h-8 text-accent-500 mb-2" />
+                                    <h3 className="font-bold text-white mb-1">Our Vision</h3>
+                                    <p className="text-sm text-gray-400">Be the world's most trusted study-abroad consultancy.</p>
                                 </div>
                             </div>
                         </Reveal>
@@ -74,15 +74,15 @@ export default function About() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.4 }}
-                                    className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-6 hidden sm:block"
+                                    className="absolute -bottom-6 -left-6 bg-dark-box rounded-2xl shadow-xl p-6 border border-gray-800 hidden sm:block"
                                 >
                                     <div className="flex items-center gap-4">
                                         <div className="w-14 h-14 rounded-xl bg-primary-600 text-white flex items-center justify-center">
                                             <Users className="w-7 h-7" />
                                         </div>
                                         <div>
-                                            <p className="text-3xl font-bold text-gray-900 font-display">2,500+</p>
-                                            <p className="text-sm text-gray-500">Students Placed</p>
+                                            <p className="text-3xl font-bold text-white font-display">2,500+</p>
+                                            <p className="text-sm text-gray-400">Students Placed</p>
                                         </div>
                                     </div>
                                 </motion.div>
@@ -92,12 +92,12 @@ export default function About() {
                 </div>
             </section>
 
-            <section className="py-20 lg:py-28 bg-gray-50">
+            <section className="py-20 lg:py-28 bg-black/20">
                 <div className="container-page">
                     <Reveal className="text-center max-w-2xl mx-auto mb-14">
                         <span className="section-label mb-4">What We Stand For</span>
-                        <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Our Core Values</h2>
-                        <p className="text-lg text-gray-600">The principles that guide everything we do.</p>
+                        <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">Our Core Values</h2>
+                        <p className="text-lg text-gray-400">The principles that guide everything we do.</p>
                     </Reveal>
                     <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {values.map((value) => (
@@ -107,11 +107,11 @@ export default function About() {
                                     transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                                     className="card p-6 text-center group h-full"
                                 >
-                                    <div className="w-14 h-14 rounded-2xl bg-primary-50 text-primary-600 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
+                                    <div className="w-14 h-14 rounded-2xl bg-primary-600/15 text-primary-400 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
                                         <value.icon className="w-7 h-7" />
                                     </div>
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2">{value.title}</h3>
-                                    <p className="text-sm text-gray-600 leading-relaxed">{value.description}</p>
+                                    <h3 className="text-lg font-bold text-white mb-2">{value.title}</h3>
+                                    <p className="text-sm text-gray-400 leading-relaxed">{value.description}</p>
                                 </motion.div>
                             </StaggerItem>
                         ))}
@@ -123,11 +123,11 @@ export default function About() {
                 <div className="container-page">
                     <Reveal className="text-center max-w-2xl mx-auto mb-14">
                         <span className="section-label mb-4">Our Journey</span>
-                        <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Milestones</h2>
-                        <p className="text-lg text-gray-600">From a small team to a trusted international consultancy.</p>
+                        <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">Milestones</h2>
+                        <p className="text-lg text-gray-400">From a small team to a trusted international consultancy.</p>
                     </Reveal>
                     <div className="relative max-w-3xl mx-auto">
-                        <div className="absolute left-0 sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary-200 via-primary-300 to-accent-300" />
+                        <div className="absolute left-0 sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary-600/30 via-primary-600/50 to-accent-500/30" />
                         {milestones.map((m, i) => (
                             <Reveal key={m.year} variants={i % 2 === 0 ? slideInRight : slideInLeft} delay={0.05} amount={0.3}>
                                 <div className={`relative flex items-start gap-6 mb-10 ${i % 2 === 0 ? 'sm:flex-row-reverse sm:text-right' : ''}`}>
@@ -136,7 +136,7 @@ export default function About() {
                                         whileInView={{ scale: [1, 1.3, 1] }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.5, delay: 0.2 }}
-                                        className="absolute left-0 sm:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary-600 ring-4 ring-primary-100 z-10"
+                                        className="absolute left-0 sm:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary-500 ring-4 ring-primary-600/20 z-10"
                                     />
                                     <div className="pl-8 sm:pl-0 sm:w-1/2 sm:pr-10">
                                         <motion.div
@@ -144,9 +144,9 @@ export default function About() {
                                             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                                             className="card p-5"
                                         >
-                                            <span className="text-primary-600 font-bold text-lg font-display">{m.year}</span>
-                                            <h3 className="font-bold text-gray-900 mt-1 mb-1">{m.title}</h3>
-                                            <p className="text-sm text-gray-600">{m.description}</p>
+                                            <span className="text-primary-400 font-bold text-lg font-display">{m.year}</span>
+                                            <h3 className="font-bold text-white mt-1 mb-1">{m.title}</h3>
+                                            <p className="text-sm text-gray-400">{m.description}</p>
                                         </motion.div>
                                     </div>
                                 </div>
@@ -156,13 +156,13 @@ export default function About() {
                 </div>
             </section>
 
-            <section className="py-16 bg-gradient-to-r from-primary-900 to-accent-800">
+            <section className="py-16 bg-dark-stories">
                 <div className="container-page text-center">
                     <Reveal>
                         <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                             Want to Be Our Next Success Story?
                         </h2>
-                        <p className="text-lg text-white/80 mb-8 max-w-xl mx-auto">
+                        <p className="text-lg text-gray-400 mb-8 max-w-xl mx-auto">
                             Get in touch today and take the first step toward your international education.
                         </p>
                         <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="inline-block">

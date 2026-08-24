@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import {
     ArrowRight, Users, CheckCircle2, Building2, Globe,
     ShieldCheck, Wallet, Languages, FileCheck, Home as HomeIcon, Plane,
-    MapPin, GraduationCap, Quote,
+    MapPin, GraduationCap,
 } from 'lucide-react';
 import HeroCarousel from '@/components/HeroCarousel';
 import { UniversityCard } from '@/components/UniversityCard';
@@ -25,7 +25,7 @@ export default function Home() {
             <HeroCarousel />
 
             {/* Stats Bar */}
-            <section className="bg-primary-900 -mt-px relative z-20">
+            <section className="bg-dark-navbar -mt-px relative z-20 border-b border-gray-800">
                 <div className="container-page py-10">
                     <StaggerGroup className="grid grid-cols-2 lg:grid-cols-4 gap-6" fast>
                         {stats.map((stat) => {
@@ -36,13 +36,13 @@ export default function Home() {
                                         <motion.div
                                             whileHover={{ scale: 1.1, rotate: 5 }}
                                             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                                            className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white shrink-0"
+                                            className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-primary-400 shrink-0"
                                         >
                                             <Icon className="w-6 h-6" />
                                         </motion.div>
                                         <div>
                                             <p className="text-3xl font-bold text-white font-display">{stat.value}</p>
-                                            <p className="text-sm text-white/70">{stat.label}</p>
+                                            <p className="text-sm text-gray-400">{stat.label}</p>
                                         </div>
                                     </div>
                                 </StaggerItem>
@@ -57,10 +57,10 @@ export default function Home() {
                 <div className="container-page">
                     <Reveal className="text-center max-w-2xl mx-auto mb-14">
                         <span className="section-label mb-4">Why Study in Georgia</span>
-                        <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                        <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
                             Everything You Need to Know
                         </h2>
-                        <p className="text-lg text-gray-600">
+                        <p className="text-lg text-gray-400">
                             Georgia offers world-class education at affordable prices, with globally recognised degrees and a safe, welcoming environment.
                         </p>
                     </Reveal>
@@ -74,11 +74,11 @@ export default function Home() {
                                         transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                                         className="card p-6 group h-full"
                                     >
-                                        <div className="w-12 h-12 rounded-xl bg-primary-50 text-primary-600 flex items-center justify-center mb-4 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
+                                        <div className="w-12 h-12 rounded-xl bg-primary-600/15 text-primary-400 flex items-center justify-center mb-4 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
                                             <Icon className="w-6 h-6" />
                                         </div>
-                                        <h3 className="text-lg font-bold text-gray-900 mb-2">{point.title}</h3>
-                                        <p className="text-gray-600 text-sm leading-relaxed">{point.description}</p>
+                                        <h3 className="text-lg font-bold text-white mb-2">{point.title}</h3>
+                                        <p className="text-gray-400 text-sm leading-relaxed">{point.description}</p>
                                     </motion.div>
                                 </StaggerItem>
                             );
@@ -94,15 +94,15 @@ export default function Home() {
             </section>
 
             {/* Featured Universities */}
-            <section className="py-20 lg:py-28 bg-gray-50">
+            <section className="py-20 lg:py-28 bg-black/20">
                 <div className="container-page">
                     <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
                         <div className="max-w-xl">
                             <span className="section-label mb-4">Our Partners</span>
-                            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
                                 Featured Universities
                             </h2>
-                            <p className="text-lg text-gray-600">
+                            <p className="text-lg text-gray-400">
                                 We partner with Georgia's top universities to bring you the best education options.
                             </p>
                         </div>
@@ -126,10 +126,10 @@ export default function Home() {
                 <div className="container-page">
                     <Reveal className="text-center max-w-2xl mx-auto mb-14">
                         <span className="section-label mb-4">Simple & Transparent</span>
-                        <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                        <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
                             Your Admission Journey
                         </h2>
-                        <p className="text-lg text-gray-600">
+                        <p className="text-lg text-gray-400">
                             From your first consultation to landing in Georgia — we guide you through every step.
                         </p>
                     </Reveal>
@@ -142,13 +142,13 @@ export default function Home() {
                                     className="relative card p-6 group h-full"
                                 >
                                     <div className="flex items-center gap-3 mb-3">
-                                        <span className="text-4xl font-bold text-primary-100 font-display group-hover:text-primary-200 transition-colors">
+                                        <span className="text-4xl font-bold text-primary-600/30 font-display group-hover:text-primary-600/50 transition-colors">
                                             {step.step}
                                         </span>
-                                        <div className="h-px flex-1 bg-gradient-to-r from-primary-100 to-transparent" />
+                                        <div className="h-px flex-1 bg-gradient-to-r from-gray-800 to-transparent" />
                                     </div>
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
-                                    <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
+                                    <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
+                                    <p className="text-gray-400 text-sm leading-relaxed">{step.description}</p>
                                 </motion.div>
                             </StaggerItem>
                         ))}
@@ -157,7 +157,7 @@ export default function Home() {
             </section>
 
             {/* Success Stories */}
-            <section className="py-20 lg:py-28 bg-gray-950 relative overflow-hidden">
+            <section className="py-20 lg:py-28 bg-dark-stories relative overflow-hidden">
                 <motion.div
                     initial={{ scale: 1.05 }}
                     whileInView={{ scale: 1 }}
@@ -169,13 +169,13 @@ export default function Home() {
                 </motion.div>
                 <div className="container-page relative z-10">
                     <Reveal className="text-center max-w-2xl mx-auto mb-14">
-                        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-xs font-semibold uppercase tracking-wider mb-4">
+                        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-primary-400 text-xs font-semibold uppercase tracking-wider mb-4 border border-gray-800">
                             Real Students, Real Results
                         </span>
                         <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
                             Success Stories
                         </h2>
-                        <p className="text-lg text-white/70">
+                        <p className="text-lg text-gray-400">
                             Meet students who turned their dreams into reality with Future Factory.
                         </p>
                     </Reveal>
@@ -185,14 +185,14 @@ export default function Home() {
                                 <motion.div
                                     whileHover={{ y: -6 }}
                                     transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                                    className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 overflow-hidden group hover:bg-white/10 transition-all duration-300 h-full"
+                                    className="bg-dark-storiesBox rounded-2xl border border-gray-800 overflow-hidden group hover:border-gray-700 transition-all duration-300 h-full"
                                 >
                                     <div className="relative h-64 overflow-hidden">
                                         <img src={story.image} alt={story.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 to-transparent" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-dark-storiesBox to-transparent" />
                                         <div className="absolute bottom-4 left-4 right-4">
                                             <h3 className="text-xl font-bold text-white">{story.name}</h3>
-                                            <p className="text-sm text-white/70 flex items-center gap-1">
+                                            <p className="text-sm text-gray-400 flex items-center gap-1">
                                                 <MapPin className="w-3 h-3" /> {story.origin}
                                             </p>
                                         </div>
@@ -200,11 +200,11 @@ export default function Home() {
                                     <div className="p-5">
                                         <div className="flex items-center gap-2 mb-3">
                                             <GraduationCap className="w-4 h-4 text-secondary-400" />
-                                            <span className="text-sm text-white/90 font-medium">{story.course}</span>
+                                            <span className="text-sm text-gray-300 font-medium">{story.course}</span>
                                         </div>
-                                        <p className="text-sm text-white/70 line-clamp-3 mb-4">{story.quote}</p>
+                                        <p className="text-sm text-gray-400 line-clamp-3 mb-4">{story.quote}</p>
                                         <div className="flex items-center justify-between">
-                                            <span className="text-xs text-white/50">{story.university}</span>
+                                            <span className="text-xs text-gray-500">{story.university}</span>
                                             <StarRating rating={story.rating} size={14} />
                                         </div>
                                     </div>
@@ -213,7 +213,7 @@ export default function Home() {
                         ))}
                     </StaggerGroup>
                     <Reveal delay={0.15} className="text-center mt-10">
-                        <Link to="/success-stories" className="btn-secondary bg-white/10 text-white border-white/30 hover:bg-white/20 hover:border-white/50">
+                        <Link to="/success-stories" className="btn-secondary">
                             Read All Success Stories
                             <ArrowRight className="w-4 h-4" />
                         </Link>
@@ -226,7 +226,7 @@ export default function Home() {
                 <div className="container-page">
                     <Reveal className="text-center max-w-2xl mx-auto mb-14">
                         <span className="section-label mb-4">What People Say</span>
-                        <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                        <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
                             Trusted by Students & Parents
                         </h2>
                     </Reveal>
@@ -241,15 +241,15 @@ export default function Home() {
             </section>
 
             {/* Quick Enquiry */}
-            <section className="py-20 lg:py-28 bg-gradient-to-br from-primary-50 via-white to-accent-50">
+            <section className="py-20 lg:py-28 bg-black/20">
                 <div className="container-page">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <Reveal variants={fadeInUp}>
                             <span className="section-label mb-4">Get Started Today</span>
-                            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
                                 Have Questions? Send Us an Enquiry
                             </h2>
-                            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                            <p className="text-lg text-gray-400 mb-8 leading-relaxed">
                                 Fill out the form and one of our expert consultants will get back to you within 24 hours.
                                 It's free, confidential, and there's no obligation.
                             </p>
@@ -262,10 +262,10 @@ export default function Home() {
                                 ].map((item) => (
                                     <StaggerItem key={item} variants={fadeInUp}>
                                         <div className="flex items-center gap-3">
-                                            <div className="w-6 h-6 rounded-full bg-success-100 flex items-center justify-center shrink-0">
-                                                <CheckCircle2 className="w-4 h-4 text-success-600" />
+                                            <div className="w-6 h-6 rounded-full bg-success-500/15 flex items-center justify-center shrink-0">
+                                                <CheckCircle2 className="w-4 h-4 text-success-500" />
                                             </div>
-                                            <span className="text-gray-700">{item}</span>
+                                            <span className="text-gray-300">{item}</span>
                                         </div>
                                     </StaggerItem>
                                 ))}
@@ -282,14 +282,14 @@ export default function Home() {
             </section>
 
             {/* CTA Banner */}
-            <section className="py-16 bg-primary-900 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-900 via-primary-800 to-accent-800" />
+            <section className="py-16 bg-dark-stories relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-dark-stories via-dark-navbar to-dark-stories" />
                 <div className="container-page relative z-10 text-center">
                     <Reveal>
                         <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                             Ready to Start Your Study Abroad Journey?
                         </h2>
-                        <p className="text-lg text-white/80 mb-8 max-w-xl mx-auto">
+                        <p className="text-lg text-gray-400 mb-8 max-w-xl mx-auto">
                             Join 2,500+ students who trusted Future Factory to guide them to their dream education.
                         </p>
                         <div className="flex flex-wrap items-center justify-center gap-3">

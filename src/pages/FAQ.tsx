@@ -36,7 +36,7 @@ export default function FAQ() {
                                 onClick={() => { setActiveCategory(cat); setOpenId(null); }}
                                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${activeCategory === cat
                                         ? 'bg-primary-600 text-white shadow-sm shadow-primary-600/30'
-                                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                        : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
                                     }`}
                             >
                                 {cat}
@@ -61,7 +61,7 @@ export default function FAQ() {
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: i * 0.06 }}
-                                        className={`bg-white rounded-2xl border transition-colors duration-300 overflow-hidden ${isOpen ? 'border-primary-200 shadow-md' : 'border-gray-100 hover:border-gray-200'
+                                        className={`bg-dark-box rounded-2xl border transition-colors duration-300 overflow-hidden ${isOpen ? 'border-primary-600/40 shadow-md' : 'border-gray-800 hover:border-gray-700'
                                             }`}
                                     >
                                         <button
@@ -69,11 +69,11 @@ export default function FAQ() {
                                             className="w-full flex items-center justify-between gap-4 p-5 text-left"
                                         >
                                             <div className="flex items-center gap-3">
-                                                <HelpCircle className={`w-5 h-5 shrink-0 transition-colors ${isOpen ? 'text-primary-600' : 'text-gray-400'}`} />
-                                                <span className="font-semibold text-gray-900">{faq.question}</span>
+                                                <HelpCircle className={`w-5 h-5 shrink-0 transition-colors ${isOpen ? 'text-primary-500' : 'text-gray-500'}`} />
+                                                <span className="font-semibold text-white">{faq.question}</span>
                                             </div>
                                             <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
-                                                <ChevronDown className={`w-5 h-5 shrink-0 ${isOpen ? 'text-primary-600' : 'text-gray-400'}`} />
+                                                <ChevronDown className={`w-5 h-5 shrink-0 ${isOpen ? 'text-primary-500' : 'text-gray-500'}`} />
                                             </motion.div>
                                         </button>
                                         <AnimatePresence initial={false}>
@@ -85,7 +85,7 @@ export default function FAQ() {
                                                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                                                     className="overflow-hidden"
                                                 >
-                                                    <p className="px-5 pb-5 text-gray-600 leading-relaxed text-sm ml-8">{faq.answer}</p>
+                                                    <p className="px-5 pb-5 text-gray-400 leading-relaxed text-sm ml-8">{faq.answer}</p>
                                                 </motion.div>
                                             )}
                                         </AnimatePresence>
@@ -95,9 +95,9 @@ export default function FAQ() {
                         </motion.div>
                     </AnimatePresence>
 
-                    <Reveal delay={0.1} className="mt-12 text-center bg-gradient-to-br from-primary-50 to-accent-50 rounded-2xl p-8 border border-primary-100">
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">Still have questions?</h3>
-                        <p className="text-gray-600 mb-6">Our team is ready to help. Get in touch — it's free.</p>
+                    <Reveal delay={0.1} className="mt-12 text-center bg-dark-box rounded-2xl p-8 border border-gray-800">
+                        <h3 className="text-xl font-bold text-white mb-2">Still have questions?</h3>
+                        <p className="text-gray-400 mb-6">Our team is ready to help. Get in touch — it's free.</p>
                         <div className="flex flex-wrap items-center justify-center gap-3">
                             <Link to="/contact" className="btn-primary">
                                 Contact Us

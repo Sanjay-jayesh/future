@@ -77,6 +77,13 @@ export default {
           800: '#991b1b',
           900: '#7f1d1d',
         },
+        dark: {
+          page: '#141414',
+          navbar: '#1D1D1D',
+          box: '#1F1F1F',
+          stories: '#0D111D',
+          storiesBox: '#070B16',
+        },
       },
       fontFamily: {
         sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],

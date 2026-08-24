@@ -1,9 +1,16 @@
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { GraduationCap, Phone, Mail, MapPin, MessageCircle, Facebook, Instagram, Linkedin, ArrowRight } from 'lucide-react';
 
 export default function Footer() {
+    const navigate = useNavigate();
+
+    const handleNav = (to: string) => {
+        navigate(to);
+        window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+    };
+
     return (
-        <footer className="bg-gray-950 text-gray-400">
+        <footer className="bg-dark-navbar text-gray-400 border-t border-gray-800">
             <div className="container-page py-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                     <div>
@@ -47,10 +54,10 @@ export default function Footer() {
                                 { to: '/faq', label: 'FAQs' },
                             ].map((link) => (
                                 <li key={link.to}>
-                                    <Link to={link.to} className="hover:text-primary-400 transition-colors inline-flex items-center gap-1 group">
+                                    <button onClick={() => handleNav(link.to)} className="hover:text-primary-400 transition-colors inline-flex items-center gap-1 group">
                                         <ArrowRight className="w-3 h-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
                                         {link.label}
-                                    </Link>
+                                    </button>
                                 </li>
                             ))}
                         </ul>
@@ -61,7 +68,7 @@ export default function Footer() {
                         <ul className="space-y-2.5 text-sm">
                             {['Study in Georgia', 'Study Medicine in Georgia', 'Study in Uzbekistan', 'Study in the UK', 'Study in Europe', 'Student Visa for Georgia'].map((label) => (
                                 <li key={label}>
-                                    <Link to="/universities" className="hover:text-primary-400 transition-colors">{label}</Link>
+                                    <button onClick={() => handleNav('/universities')} className="hover:text-primary-400 transition-colors">{label}</button>
                                 </li>
                             ))}
                         </ul>
@@ -83,14 +90,14 @@ export default function Footer() {
                                 <a href="mailto:hello@futurefactory.ge" className="hover:text-primary-400 transition-colors">hello@futurefactory.ge</a>
                             </li>
                         </ul>
-                        <Link to="/contact" className="btn-primary mt-5 w-full text-sm">
+                        <button onClick={() => handleNav('/contact')} className="btn-primary mt-5 w-full text-sm">
                             Book Free Consultation
-                        </Link>
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <div className="border-t border-white/5">
+            <div className="border-t border-gray-800">
                 <div className="container-page py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-gray-500">
                     <p>&copy; {new Date().getFullYear()} Future Factory. All rights reserved.</p>
                     <p>Empowering students to study abroad with confidence.</p>

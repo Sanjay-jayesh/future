@@ -19,7 +19,7 @@ export default function PageHero({ label, title, subtitle, image, breadcrumb }: 
                 className="absolute inset-0"
             >
                 <img src={image} alt="" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-b from-gray-950/80 via-gray-950/60 to-gray-950/70" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-dark-page" />
             </motion.div>
 
             <div className="container-page relative z-10">
@@ -28,7 +28,7 @@ export default function PageHero({ label, title, subtitle, image, breadcrumb }: 
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.4 }}
-                        className="flex items-center gap-2 text-sm text-white/70 mb-4"
+                        className="flex items-center gap-2 text-sm text-gray-400 mb-4"
                     >
                         {breadcrumb.map((item, i) => (
                             <span key={i} className="flex items-center gap-2">
@@ -37,7 +37,7 @@ export default function PageHero({ label, title, subtitle, image, breadcrumb }: 
                                 ) : (
                                     <span className="text-white">{item.label}</span>
                                 )}
-                                {i < breadcrumb.length - 1 && <span className="text-white/40">/</span>}
+                                {i < breadcrumb.length - 1 && <span className="text-gray-600">/</span>}
                             </span>
                         ))}
                     </motion.nav>
@@ -47,7 +47,7 @@ export default function PageHero({ label, title, subtitle, image, breadcrumb }: 
                         initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
-                        className="section-label bg-white/10 text-white border border-white/20 mb-4 inline-flex"
+                        className="section-label mb-4 inline-flex"
                     >
                         {label}
                     </motion.span>
@@ -65,7 +65,7 @@ export default function PageHero({ label, title, subtitle, image, breadcrumb }: 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                        className="mt-5 text-lg text-white/85 text-shadow max-w-2xl leading-relaxed"
+                        className="mt-5 text-lg text-gray-300 text-shadow max-w-2xl leading-relaxed"
                     >
                         {subtitle}
                     </motion.p>

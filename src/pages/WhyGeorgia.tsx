@@ -48,10 +48,10 @@ export default function WhyGeorgia() {
                 <div className="container-page">
                     <Reveal className="text-center max-w-2xl mx-auto mb-14">
                         <span className="section-label mb-4">The Advantages</span>
-                        <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                        <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
                             Six Reasons to Choose Georgia
                         </h2>
-                        <p className="text-lg text-gray-600">
+                        <p className="text-lg text-gray-400">
                             Georgia is quickly becoming one of the most popular study-abroad destinations. Here's why.
                         </p>
                     </Reveal>
@@ -65,11 +65,11 @@ export default function WhyGeorgia() {
                                         transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                                         className="card p-6 group h-full"
                                     >
-                                        <div className="w-12 h-12 rounded-xl bg-primary-50 text-primary-600 flex items-center justify-center mb-4 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
+                                        <div className="w-12 h-12 rounded-xl bg-primary-600/15 text-primary-400 flex items-center justify-center mb-4 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
                                             <Icon className="w-6 h-6" />
                                         </div>
-                                        <h3 className="text-lg font-bold text-gray-900 mb-2">{point.title}</h3>
-                                        <p className="text-gray-600 text-sm leading-relaxed">{point.description}</p>
+                                        <h3 className="text-lg font-bold text-white mb-2">{point.title}</h3>
+                                        <p className="text-gray-400 text-sm leading-relaxed">{point.description}</p>
                                     </motion.div>
                                 </StaggerItem>
                             );
@@ -78,24 +78,24 @@ export default function WhyGeorgia() {
                 </div>
             </section>
 
-            <section className="py-20 lg:py-28 bg-gray-50">
+            <section className="py-20 lg:py-28 bg-black/20">
                 <div className="container-page">
                     <Reveal className="text-center max-w-2xl mx-auto mb-14">
                         <span className="section-label mb-4">See the Difference</span>
-                        <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                        <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
                             Georgia vs. Other Destinations
                         </h2>
-                        <p className="text-lg text-gray-600">
+                        <p className="text-lg text-gray-400">
                             A side-by-side comparison of costs and key factors.
                         </p>
                     </Reveal>
                     <Reveal variants={scaleIn}>
                         <div className="overflow-x-auto">
-                            <table className="w-full max-w-4xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                            <table className="w-full max-w-4xl mx-auto bg-dark-box rounded-2xl shadow-sm border border-gray-800 overflow-hidden">
                                 <thead>
-                                    <tr className="bg-gray-50 border-b border-gray-100">
-                                        <th className="text-left p-4 font-semibold text-gray-700">Feature</th>
-                                        <th className="text-center p-4 font-semibold text-primary-700 bg-primary-50">Georgia</th>
+                                    <tr className="bg-black/20 border-b border-gray-800">
+                                        <th className="text-left p-4 font-semibold text-gray-300">Feature</th>
+                                        <th className="text-center p-4 font-semibold text-primary-400 bg-primary-600/10">Georgia</th>
                                         <th className="text-center p-4 font-semibold text-gray-500">UK</th>
                                         <th className="text-center p-4 font-semibold text-gray-500">USA</th>
                                     </tr>
@@ -108,12 +108,12 @@ export default function WhyGeorgia() {
                                             whileInView={{ opacity: 1, x: 0 }}
                                             viewport={{ once: true }}
                                             transition={{ delay: i * 0.08 }}
-                                            className="border-b border-gray-50 last:border-0"
+                                            className="border-b border-gray-800/50 last:border-0"
                                         >
-                                            <td className="p-4 text-gray-700 font-medium">{row.feature}</td>
-                                            <td className="p-4 text-center font-semibold text-primary-700 bg-primary-50/50">{row.georgia}</td>
-                                            <td className="p-4 text-center text-gray-600">{row.uk}</td>
-                                            <td className="p-4 text-center text-gray-600">{row.usa}</td>
+                                            <td className="p-4 text-gray-300 font-medium">{row.feature}</td>
+                                            <td className="p-4 text-center font-semibold text-primary-400 bg-primary-600/5">{row.georgia}</td>
+                                            <td className="p-4 text-center text-gray-500">{row.uk}</td>
+                                            <td className="p-4 text-center text-gray-500">{row.usa}</td>
                                         </motion.tr>
                                     ))}
                                 </tbody>
@@ -128,10 +128,10 @@ export default function WhyGeorgia() {
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <Reveal variants={slideInLeft}>
                             <span className="section-label mb-4">Student Life</span>
-                            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                                 Life in Georgia
                             </h2>
-                            <p className="text-gray-600 leading-relaxed mb-8">
+                            <p className="text-gray-400 leading-relaxed mb-8">
                                 Georgia isn't just about studying — it's about living. From the cobbled streets of Old Tbilisi
                                 to the Caucasus mountains, Georgia offers a rich cultural experience alongside your education.
                             </p>
@@ -139,12 +139,12 @@ export default function WhyGeorgia() {
                                 {lifeInGeorgia.map((item) => (
                                     <StaggerItem key={item.title} variants={fadeInUp}>
                                         <div className="flex gap-4">
-                                            <div className="w-10 h-10 rounded-xl bg-accent-50 text-accent-600 flex items-center justify-center shrink-0">
+                                            <div className="w-10 h-10 rounded-xl bg-accent-500/15 text-accent-400 flex items-center justify-center shrink-0">
                                                 <item.icon className="w-5 h-5" />
                                             </div>
                                             <div>
-                                                <h3 className="font-bold text-gray-900 mb-1">{item.title}</h3>
-                                                <p className="text-sm text-gray-600">{item.description}</p>
+                                                <h3 className="font-bold text-white mb-1">{item.title}</h3>
+                                                <p className="text-sm text-gray-400">{item.description}</p>
                                             </div>
                                         </div>
                                     </StaggerItem>
@@ -169,15 +169,15 @@ export default function WhyGeorgia() {
                 </div>
             </section>
 
-            <section className="py-20 lg:py-28 bg-gradient-to-br from-primary-50 via-white to-accent-50">
+            <section className="py-20 lg:py-28 bg-black/20">
                 <div className="container-page">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <Reveal variants={slideInLeft}>
                             <span className="section-label mb-4">Ready to Go?</span>
-                            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                                 Start Your Georgia Journey
                             </h2>
-                            <p className="text-gray-600 leading-relaxed mb-6">
+                            <p className="text-gray-400 leading-relaxed mb-6">
                                 Tell us about your goals and we'll help you find the perfect university and program in Georgia.
                             </p>
                             <Link to="/universities" className="btn-secondary">

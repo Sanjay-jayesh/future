@@ -20,7 +20,7 @@ export default function WhatsAppButton() {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.85, y: 20 }}
                         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                        className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-4 w-72"
+                        className="bg-dark-box rounded-2xl shadow-2xl border border-gray-800 p-4 w-72"
                     >
                         <div className="flex items-center justify-between mb-3">
                             <div className="flex items-center gap-2">
@@ -28,11 +28,11 @@ export default function WhatsAppButton() {
                                     <MessageCircle className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-sm text-gray-900">Chat with us</p>
+                                    <p className="font-semibold text-sm text-white">Chat with us</p>
                                     <p className="text-xs text-gray-500">Typically replies in minutes</p>
                                 </div>
                             </div>
-                            <button onClick={() => setExpanded(false)} className="text-gray-400 hover:text-gray-600">
+                            <button onClick={() => setExpanded(false)} className="text-gray-500 hover:text-gray-300">
                                 <X className="w-4 h-4" />
                             </button>
                         </div>
@@ -40,7 +40,7 @@ export default function WhatsAppButton() {
                             initial={{ opacity: 0, y: 8 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="text-sm text-gray-600 mb-3 bg-gray-50 rounded-lg p-3"
+                            className="text-sm text-gray-400 mb-3 bg-gray-800/50 rounded-lg p-3"
                         >
                             Hi! Have questions about studying abroad? We're here to help. Send us a message on WhatsApp.
                         </motion.p>

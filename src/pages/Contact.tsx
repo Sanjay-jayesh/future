@@ -10,6 +10,13 @@ const contactInfo = [
     { icon: Clock, title: 'Office Hours', lines: ['Monday – Friday: 9am – 7pm', 'Saturday: 10am – 4pm'], color: 'success' },
 ];
 
+const colorMap: Record<string, { bg: string; text: string; hoverBg: string; hoverText: string }> = {
+    primary: { bg: 'bg-primary-600/15', text: 'text-primary-400', hoverBg: 'group-hover:bg-primary-600', hoverText: 'group-hover:text-white' },
+    accent: { bg: 'bg-accent-500/15', text: 'text-accent-400', hoverBg: 'group-hover:bg-accent-600', hoverText: 'group-hover:text-white' },
+    secondary: { bg: 'bg-secondary-500/15', text: 'text-secondary-400', hoverBg: 'group-hover:bg-secondary-600', hoverText: 'group-hover:text-white' },
+    success: { bg: 'bg-success-500/15', text: 'text-success-400', hoverBg: 'group-hover:bg-success-600', hoverText: 'group-hover:text-white' },
+};
+
 export default function Contact() {
     return (
         <>
@@ -24,41 +31,44 @@ export default function Contact() {
             <section className="py-16 lg:py-24">
                 <div className="container-page">
                     <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16" fast>
-                        {contactInfo.map((info) => (
-                            <StaggerItem key={info.title} variants={fadeInUp}>
-                                <motion.div
-                                    whileHover={{ y: -6 }}
-                                    transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                                    className="card p-6 text-center group"
-                                >
-                                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 bg-${info.color}-50 text-${info.color}-600 group-hover:bg-${info.color}-600 group-hover:text-white`}>
-                                        <info.icon className="w-7 h-7" />
-                                    </div>
-                                    <h3 className="font-bold text-gray-900 mb-2">{info.title}</h3>
-                                    {info.lines.map((line, j) => (
-                                        <p key={j} className="text-sm text-gray-600">{line}</p>
-                                    ))}
-                                </motion.div>
-                            </StaggerItem>
-                        ))}
+                        {contactInfo.map((info) => {
+                            const c = colorMap[info.color];
+                            return (
+                                <StaggerItem key={info.title} variants={fadeInUp}>
+                                    <motion.div
+                                        whileHover={{ y: -6 }}
+                                        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                                        className="card p-6 text-center group"
+                                    >
+                                        <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 ${c.bg} ${c.text} ${c.hoverBg} ${c.hoverText}`}>
+                                            <info.icon className="w-7 h-7" />
+                                        </div>
+                                        <h3 className="font-bold text-white mb-2">{info.title}</h3>
+                                        {info.lines.map((line, j) => (
+                                            <p key={j} className="text-sm text-gray-400">{line}</p>
+                                        ))}
+                                    </motion.div>
+                                </StaggerItem>
+                            );
+                        })}
                     </StaggerGroup>
 
                     <div className="grid lg:grid-cols-2 gap-12 items-start">
                         <Reveal variants={slideInLeft}>
                             <span className="section-label mb-4">Send a Message</span>
-                            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                                 Book Your Free Consultation
                             </h2>
-                            <p className="text-gray-600 leading-relaxed mb-8">
+                            <p className="text-gray-400 leading-relaxed mb-8">
                                 Fill out the form and we'll get back to you within 24 hours with personalised recommendations.
                                 Or reach us instantly on WhatsApp — we're always just a message away.
                             </p>
 
                             <StaggerGroup className="space-y-4" fast>
                                 {[
-                                    { href: 'https://wa.me/995555123456?text=Hi%20Future%20Factory,%20I%27d%20like%20to%20book%20a%20free%20consultation', bg: 'bg-[#25D366]/5', border: 'border-[#25D366]/20', hover: 'hover:bg-[#25D366]/10', iconBg: 'bg-[#25D366]', icon: <MessageCircle className="w-6 h-6" />, title: 'Chat on WhatsApp', subtitle: 'Fastest response — typically within minutes', trailing: <Send className="w-5 h-5 text-gray-400 group-hover:text-[#25D366] transition-colors" /> },
-                                    { href: 'tel:+995555123456', bg: 'bg-primary-50', border: 'border-primary-100', hover: 'hover:bg-primary-100', iconBg: 'bg-primary-600', icon: <Phone className="w-6 h-6" />, title: 'Call Us Directly', subtitle: '+995 555 123 456', trailing: null },
-                                    { href: 'mailto:hello@futurefactory.ge', bg: 'bg-accent-50', border: 'border-accent-100', hover: 'hover:bg-accent-100', iconBg: 'bg-accent-600', icon: <Mail className="w-6 h-6" />, title: 'Email Us', subtitle: 'hello@futurefactory.ge', trailing: null },
+                                    { href: 'https://wa.me/995555123456?text=Hi%20Future%20Factory,%20I%27d%20like%20to%20book%20a%20free%20consultation', bg: 'bg-[#25D366]/5', border: 'border-[#25D366]/20', hover: 'hover:bg-[#25D366]/10', iconBg: 'bg-[#25D366]', icon: <MessageCircle className="w-6 h-6" />, title: 'Chat on WhatsApp', subtitle: 'Fastest response — typically within minutes', trailing: <Send className="w-5 h-5 text-gray-500 group-hover:text-[#25D366] transition-colors" /> },
+                                    { href: 'tel:+995555123456', bg: 'bg-primary-600/5', border: 'border-primary-600/20', hover: 'hover:bg-primary-600/10', iconBg: 'bg-primary-600', icon: <Phone className="w-6 h-6" />, title: 'Call Us Directly', subtitle: '+995 555 123 456', trailing: null },
+                                    { href: 'mailto:hello@futurefactory.ge', bg: 'bg-accent-500/5', border: 'border-accent-500/20', hover: 'hover:bg-accent-500/10', iconBg: 'bg-accent-600', icon: <Mail className="w-6 h-6" />, title: 'Email Us', subtitle: 'hello@futurefactory.ge', trailing: null },
                                 ].map((item, i) => (
                                     <StaggerItem key={i} variants={fadeInUp}>
                                         <motion.a
@@ -73,8 +83,8 @@ export default function Contact() {
                                                 {item.icon}
                                             </div>
                                             <div className="flex-1">
-                                                <p className="font-bold text-gray-900">{item.title}</p>
-                                                <p className="text-sm text-gray-500">{item.subtitle}</p>
+                                                <p className="font-bold text-white">{item.title}</p>
+                                                <p className="text-sm text-gray-400">{item.subtitle}</p>
                                             </div>
                                             {item.trailing}
                                         </motion.a>
@@ -83,7 +93,7 @@ export default function Contact() {
                             </StaggerGroup>
 
                             <div className="mt-8">
-                                <p className="text-sm font-medium text-gray-700 mb-3">Follow us on social media</p>
+                                <p className="text-sm font-medium text-gray-300 mb-3">Follow us on social media</p>
                                 <div className="flex items-center gap-3">
                                     {[Facebook, Instagram, Linkedin].map((Icon, i) => (
                                         <motion.a
@@ -91,7 +101,7 @@ export default function Contact() {
                                             href="#"
                                             whileHover={{ scale: 1.1, y: -2 }}
                                             whileTap={{ scale: 0.95 }}
-                                            className="w-10 h-10 rounded-xl bg-gray-100 hover:bg-primary-600 flex items-center justify-center text-gray-600 hover:text-white transition-all"
+                                            className="w-10 h-10 rounded-xl bg-gray-800 hover:bg-primary-600 flex items-center justify-center text-gray-400 hover:text-white transition-all"
                                         >
                                             <Icon className="w-5 h-5" />
                                         </motion.a>
@@ -114,7 +124,7 @@ export default function Contact() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="rounded-2xl overflow-hidden shadow-sm border border-gray-100 h-96"
+                        className="rounded-2xl overflow-hidden shadow-sm border border-gray-800 h-96"
                     >
                         <iframe
                             title="Future Factory Location"

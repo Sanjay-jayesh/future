@@ -35,7 +35,7 @@ export default function EnquiryForm({ compact = false, title, subtitle }: Enquir
     };
 
     return (
-        <div className={`bg-white rounded-2xl shadow-xl border border-gray-100 p-6 sm:p-8 ${compact ? '' : 'max-w-lg mx-auto'}`}>
+        <div className={`bg-dark-box rounded-2xl shadow-xl border border-gray-800 p-6 sm:p-8 ${compact ? '' : 'max-w-lg mx-auto'}`}>
             <AnimatePresence mode="wait">
                 {status === 'success' ? (
                     <motion.div
@@ -50,12 +50,12 @@ export default function EnquiryForm({ compact = false, title, subtitle }: Enquir
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             transition={{ delay: 0.15, type: 'spring', stiffness: 200, damping: 15 }}
-                            className="w-16 h-16 rounded-full bg-success-50 flex items-center justify-center mx-auto mb-4"
+                            className="w-16 h-16 rounded-full bg-success-500/15 flex items-center justify-center mx-auto mb-4"
                         >
                             <CheckCircle2 className="w-8 h-8 text-success-500" />
                         </motion.div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">Thank you!</h3>
-                        <p className="text-gray-600 mb-6">
+                        <h3 className="text-xl font-bold text-white mb-2">Thank you!</h3>
+                        <p className="text-gray-400 mb-6">
                             We've received your enquiry. One of our consultants will reach out to you within 24 hours.
                         </p>
                         <button onClick={() => setStatus('idle')} className="btn-secondary">
@@ -71,8 +71,8 @@ export default function EnquiryForm({ compact = false, title, subtitle }: Enquir
                     >
                         {(title || subtitle) && (
                             <div className="mb-6">
-                                {title && <h3 className="text-xl font-bold text-gray-900 mb-1">{title}</h3>}
-                                {subtitle && <p className="text-gray-500 text-sm">{subtitle}</p>}
+                                {title && <h3 className="text-xl font-bold text-white mb-1">{title}</h3>}
+                                {subtitle && <p className="text-gray-400 text-sm">{subtitle}</p>}
                             </div>
                         )}
                         <AnimatePresence>
@@ -81,7 +81,7 @@ export default function EnquiryForm({ compact = false, title, subtitle }: Enquir
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
                                     exit={{ opacity: 0, height: 0 }}
-                                    className="mb-4 p-3 rounded-lg bg-error-50 border border-error-200 flex items-center gap-2 text-sm text-error-700 overflow-hidden"
+                                    className="mb-4 p-3 rounded-lg bg-error-500/10 border border-error-500/30 flex items-center gap-2 text-sm text-error-400 overflow-hidden"
                                 >
                                     <AlertCircle className="w-4 h-4 shrink-0" />
                                     Something went wrong. Please try again or WhatsApp us directly.
@@ -91,7 +91,7 @@ export default function EnquiryForm({ compact = false, title, subtitle }: Enquir
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Full Name *</label>
+                                    <label className="block text-sm font-medium text-gray-300 mb-1.5">Full Name *</label>
                                     <input
                                         type="text"
                                         required
@@ -102,7 +102,7 @@ export default function EnquiryForm({ compact = false, title, subtitle }: Enquir
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Email *</label>
+                                    <label className="block text-sm font-medium text-gray-300 mb-1.5">Email *</label>
                                     <input
                                         type="email"
                                         required
@@ -115,7 +115,7 @@ export default function EnquiryForm({ compact = false, title, subtitle }: Enquir
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Phone / WhatsApp</label>
+                                    <label className="block text-sm font-medium text-gray-300 mb-1.5">Phone / WhatsApp</label>
                                     <input
                                         type="tel"
                                         value={formData.phone}
@@ -125,7 +125,7 @@ export default function EnquiryForm({ compact = false, title, subtitle }: Enquir
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Country of Interest</label>
+                                    <label className="block text-sm font-medium text-gray-300 mb-1.5">Country of Interest</label>
                                     <select
                                         value={formData.country_of_interest}
                                         onChange={(e) => setFormData({ ...formData, country_of_interest: e.target.value })}
@@ -140,7 +140,7 @@ export default function EnquiryForm({ compact = false, title, subtitle }: Enquir
                                 </div>
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1.5">Course Interest</label>
+                                <label className="block text-sm font-medium text-gray-300 mb-1.5">Course Interest</label>
                                 <select
                                     value={formData.course_interest}
                                     onChange={(e) => setFormData({ ...formData, course_interest: e.target.value })}
@@ -156,7 +156,7 @@ export default function EnquiryForm({ compact = false, title, subtitle }: Enquir
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1.5">Message</label>
+                                <label className="block text-sm font-medium text-gray-300 mb-1.5">Message</label>
                                 <textarea
                                     value={formData.message}
                                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -184,7 +184,7 @@ export default function EnquiryForm({ compact = false, title, subtitle }: Enquir
                                     </>
                                 )}
                             </motion.button>
-                            <p className="text-xs text-gray-400 text-center">
+                            <p className="text-xs text-gray-500 text-center">
                                 We'll respond within 24 hours. Your information is kept confidential.
                             </p>
                         </form>

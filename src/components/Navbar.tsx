@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useNavigate, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, GraduationCap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -18,6 +18,7 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 20);
@@ -30,16 +31,25 @@ export default function Navbar() {
         setIsOpen(false);
     }, [location.pathname]);
 
+    const handleLogoClick = () => {
+        if (location.pathname === '/') {
+            window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+        } else {
+            navigate('/');
+            window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+        }
+    };
+
     return (
         <motion.header
             initial={{ y: -80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'glass shadow-sm' : 'bg-transparent'
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'glass shadow-sm' : 'bg-dark-navbar/80 backdrop-blur-sm'
                 }`}
         >
             <nav className="container-page flex items-center justify-between h-16 lg:h-20">
-                <Link to="/" className="flex items-center gap-2.5 group">
+                <button onClick={handleLogoClick} className="flex items-center gap-2.5 group">
                     <motion.div
                         whileHover={{ scale: 1.08, rotate: -5 }}
                         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
@@ -48,14 +58,14 @@ export default function Navbar() {
                         <GraduationCap className="w-5 h-5" />
                     </motion.div>
                     <div className="flex flex-col leading-none">
-                        <span className={`font-display font-bold text-lg ${scrolled ? 'text-gray-900' : 'text-white'} transition-colors`}>
+                        <span className="font-display font-bold text-lg text-white transition-colors">
                             Future Factory
                         </span>
-                        <span className={`text-[10px] font-medium tracking-wider uppercase ${scrolled ? 'text-gray-500' : 'text-white/70'} transition-colors`}>
+                        <span className="text-[10px] font-medium tracking-wider uppercase text-gray-400 transition-colors">
                             Study Abroad Consultancy
                         </span>
                     </div>
-                </Link>
+                </button>
 
                 <div className="hidden lg:flex items-center gap-1">
                     {navLinks.map((link) => (
@@ -65,12 +75,8 @@ export default function Navbar() {
                             end={link.to === '/'}
                             className={({ isActive }) =>
                                 `relative px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive
-                                    ? scrolled
-                                        ? 'bg-primary-50 text-primary-700'
-                                        : 'bg-white/15 text-white'
-                                    : scrolled
-                                        ? 'text-gray-600 hover:text-primary-700 hover:bg-primary-50'
-                                        : 'text-white/90 hover:text-white hover:bg-white/10'
+                                    ? 'bg-primary-600/15 text-primary-400'
+                                    : 'text-gray-400 hover:text-white hover:bg-white/5'
                                 }`
                             }
                         >
@@ -80,7 +86,7 @@ export default function Navbar() {
                                     {isActive && (
                                         <motion.div
                                             layoutId="nav-underline"
-                                            className="absolute bottom-0 left-3.5 right-3.5 h-0.5 bg-primary-600 rounded-full"
+                                            className="absolute bottom-0 left-3.5 right-3.5 h-0.5 bg-primary-500 rounded-full"
                                             transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                                         />
                                     )}
@@ -93,22 +99,22 @@ export default function Navbar() {
                 <div className="hidden lg:flex items-center gap-3">
                     <a
                         href="tel:+995555123456"
-                        className={`flex items-center gap-2 text-sm font-medium ${scrolled ? 'text-gray-700 hover:text-primary-700' : 'text-white/90 hover:text-white'} transition-colors`}
+                        className="flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-white transition-colors"
                     >
                         <Phone className="w-4 h-4" />
                         +995 555 123 456
                     </a>
                     <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-                        <Link to="/contact" className="btn-primary !py-2.5 !px-5 text-sm">
+                        <button onClick={() => { navigate('/contact'); window.scrollTo(0, 0); }} className="btn-primary !py-2.5 !px-5 text-sm">
                             Free Consultation
-                        </Link>
+                        </button>
                     </motion.div>
                 </div>
 
                 <motion.button
                     onClick={() => setIsOpen(!isOpen)}
                     whileTap={{ scale: 0.9 }}
-                    className={`lg:hidden p-2 rounded-lg ${scrolled ? 'text-gray-900' : 'text-white'}`}
+                    className="lg:hidden p-2 rounded-lg text-white"
                     aria-label="Menu"
                 >
                     {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -122,7 +128,7 @@ export default function Navbar() {
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                        className="lg:hidden bg-white border-t border-gray-100 overflow-hidden"
+                        className="lg:hidden bg-dark-navbar border-t border-gray-800 overflow-hidden"
                     >
                         <div className="container-page py-4 flex flex-col gap-1">
                             {navLinks.map((link, i) => (
@@ -136,7 +142,7 @@ export default function Navbar() {
                                         to={link.to}
                                         end={link.to === '/'}
                                         className={({ isActive }) =>
-                                            `px-4 py-3 rounded-lg text-sm font-medium transition-colors block ${isActive ? 'bg-primary-50 text-primary-700' : 'text-gray-700 hover:bg-gray-50'
+                                            `px-4 py-3 rounded-lg text-sm font-medium transition-colors block ${isActive ? 'bg-primary-600/15 text-primary-400' : 'text-gray-300 hover:bg-gray-800'
                                             }`
                                         }
                                     >
@@ -144,9 +150,9 @@ export default function Navbar() {
                                     </NavLink>
                                 </motion.div>
                             ))}
-                            <Link to="/contact" className="btn-primary mt-3 w-full">
+                            <button onClick={() => { navigate('/contact'); window.scrollTo(0, 0); }} className="btn-primary mt-3 w-full">
                                 Book Free Consultation
-                            </Link>
+                            </button>
                         </div>
                     </motion.div>
                 )}
