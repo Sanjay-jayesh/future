@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { MessageCircle, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -6,8 +6,6 @@ import { heroSlides } from '@/data/content';
 
 export default function HeroCarousel() {
     const [current, setCurrent] = useState(0);
-    const [isPaused, setIsPaused] = useState(false);
-    const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
     const next = useCallback(() => {
         setCurrent((c) => (c + 1) % heroSlides.length);
@@ -17,23 +15,15 @@ export default function HeroCarousel() {
     }, []);
 
     useEffect(() => {
-        if (isPaused) {
-            if (timerRef.current) clearInterval(timerRef.current);
-            return;
-        }
-        timerRef.current = setInterval(() => {
+        const timer = setInterval(() => {
             setCurrent((c) => (c + 1) % heroSlides.length);
         }, 6000);
-        return () => {
-            if (timerRef.current) clearInterval(timerRef.current);
-        };
-    }, [isPaused]);
+        return () => clearInterval(timer);
+    }, []);
 
     return (
         <section
             className="relative h-screen min-h-[680px] overflow-hidden"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
         >
             <AnimatePresence mode="wait">
                 <motion.div
@@ -122,8 +112,8 @@ export default function HeroCarousel() {
                                                 key={`bar-${current}`}
                                                 className="absolute inset-y-0 left-0 bg-white rounded-full"
                                                 initial={{ width: '0%' }}
-                                                animate={{ width: isPaused ? '30%' : '100%' }}
-                                                transition={{ duration: isPaused ? 0.3 : 6, ease: 'linear' }}
+                                                animate={{ width: '100%' }}
+                                                transition={{ duration: 6, ease: 'linear' }}
                                             />
                                         )}
                                         {i !== current && (

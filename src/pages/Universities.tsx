@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Filter } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageHero from '@/components/PageHero';
@@ -8,7 +9,27 @@ import { universities } from '@/data/content';
 const countries = ['All', 'Georgia', 'Uzbekistan', 'UK'];
 
 export default function Universities() {
-    const [filter, setFilter] = useState('All');
+    const [searchParams, setSearchParams] = useSearchParams();
+    const initial = searchParams.get('country') ?? 'All';
+    const validInitial = countries.includes(initial) ? initial : 'All';
+    const [filter, setFilter] = useState(validInitial);
+
+    useEffect(() => {
+        const param = searchParams.get('country');
+        if (param && countries.includes(param) && param !== filter) {
+            setFilter(param);
+        }
+    }, [searchParams]);
+
+    const handleFilter = (country: string) => {
+        setFilter(country);
+        if (country === 'All') {
+            setSearchParams({});
+        } else {
+            setSearchParams({ country });
+        }
+    };
+
     const filtered = filter === 'All' ? universities : universities.filter((u) => u.country === filter);
 
     return (
@@ -37,7 +58,7 @@ export default function Universities() {
                                     key={country}
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    onClick={() => setFilter(country)}
+                                    onClick={() => handleFilter(country)}
                                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${filter === country
                                             ? 'bg-primary-600 text-white shadow-sm shadow-primary-600/30'
                                             : 'bg-gray-800 text-gray-400 hover:bg-gray-700'

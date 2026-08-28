@@ -66,9 +66,16 @@ export default function Footer() {
                     <div>
                         <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Study Destinations</h4>
                         <ul className="space-y-2.5 text-sm">
-                            {['Study in Georgia', 'Study Medicine in Georgia', 'Study in Uzbekistan', 'Study in the UK', 'Study in Europe', 'Student Visa for Georgia'].map((label) => (
-                                <li key={label}>
-                                    <button onClick={() => handleNav('/universities')} className="hover:text-primary-400 transition-colors">{label}</button>
+                            {[
+                                { label: 'Study in Georgia', to: '/universities?country=Georgia' },
+                                { label: 'Study Medicine in Georgia', to: '/universities?country=Georgia' },
+                                { label: 'Study in Uzbekistan', to: '/universities?country=Uzbekistan' },
+                                { label: 'Study in the UK', to: '/universities?country=UK' },
+                                { label: 'Study in Europe', to: '/universities' },
+                                { label: 'Student Visa for Georgia', to: '/why-georgia' },
+                            ].map((link) => (
+                                <li key={link.label}>
+                                    <button onClick={() => handleNav(link.to)} className="hover:text-primary-400 transition-colors">{link.label}</button>
                                 </li>
                             ))}
                         </ul>
