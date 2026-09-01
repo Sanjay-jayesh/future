@@ -134,6 +134,7 @@ export default function EnquiryForm({ compact = false, title, subtitle }: Enquir
                                         <option value="">Select...</option>
                                         <option value="Georgia">Georgia</option>
                                         <option value="Uzbekistan">Uzbekistan</option>
+                                        <option value="Canada">Canada</option>
                                         <option value="UK">United Kingdom</option>
                                         <option value="Europe">Europe</option>
                                     </select>

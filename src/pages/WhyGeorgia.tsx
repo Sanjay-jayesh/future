@@ -11,12 +11,12 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 };
 
 const comparisonData = [
-    { feature: 'Average Tuition (Medicine)', georgia: '$5,000/yr', uk: '$40,000/yr', usa: '$55,000/yr' },
-    { feature: 'Monthly Living Cost', georgia: '$300-500', uk: '$1,200-1,800', usa: '$1,000-2,000' },
-    { feature: 'Visa Difficulty', georgia: 'Low', uk: 'Medium', usa: 'High' },
-    { feature: 'English-Taught Programs', georgia: 'Yes', uk: 'Yes', usa: 'Yes' },
-    { feature: 'WHO Recognition (Medical)', georgia: 'Yes', uk: 'Yes', usa: 'Yes' },
-    { feature: 'Part-time Work Allowed', georgia: 'Yes', uk: 'Yes (20hrs)', usa: 'Yes (20hrs)' },
+    { feature: 'Average Tuition (Medicine)', georgia: '$5,000/yr', uzbekistan: '$3,000/yr', canada: '$45,000/yr', uk: '$40,000/yr' },
+    { feature: 'Monthly Living Cost', georgia: '$300-500', uzbekistan: '$200-400', canada: '$1,000-1,500', uk: '$1,200-1,800' },
+    { feature: 'Visa Difficulty', georgia: 'Low', uzbekistan: 'Low', canada: 'Medium', uk: 'Medium' },
+    { feature: 'English-Taught Programs', georgia: 'Yes', uzbekistan: 'Yes', canada: 'Yes', uk: 'Yes' },
+    { feature: 'WHO Recognition (Medical)', georgia: 'Yes', uzbekistan: 'Yes', canada: 'Yes', uk: 'Yes' },
+    { feature: 'Post-Study Work Option', georgia: 'Yes', uzbekistan: 'Limited', canada: 'Yes (3yr)', uk: 'Yes (2yr)' },
 ];
 
 const lifeInGeorgia = [
@@ -86,18 +86,19 @@ export default function WhyGeorgia() {
                             Georgia vs. Other Destinations
                         </h2>
                         <p className="text-lg text-gray-400">
-                            A side-by-side comparison of costs and key factors.
+                            A side-by-side comparison of costs and key factors across our study destinations.
                         </p>
                     </Reveal>
                     <Reveal variants={scaleIn}>
                         <div className="overflow-x-auto">
-                            <table className="w-full max-w-4xl mx-auto bg-dark-box rounded-2xl shadow-sm border border-gray-800 overflow-hidden">
+                            <table className="w-full max-w-5xl mx-auto bg-dark-box rounded-2xl shadow-sm border border-gray-800 overflow-hidden">
                                 <thead>
                                     <tr className="bg-black/20 border-b border-gray-800">
                                         <th className="text-left p-4 font-semibold text-gray-300">Feature</th>
                                         <th className="text-center p-4 font-semibold text-primary-400 bg-primary-600/10">Georgia</th>
+                                        <th className="text-center p-4 font-semibold text-gray-500">Uzbekistan</th>
+                                        <th className="text-center p-4 font-semibold text-gray-500">Canada</th>
                                         <th className="text-center p-4 font-semibold text-gray-500">UK</th>
-                                        <th className="text-center p-4 font-semibold text-gray-500">USA</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -112,8 +113,9 @@ export default function WhyGeorgia() {
                                         >
                                             <td className="p-4 text-gray-300 font-medium">{row.feature}</td>
                                             <td className="p-4 text-center font-semibold text-primary-400 bg-primary-600/5">{row.georgia}</td>
+                                            <td className="p-4 text-center text-gray-500">{row.uzbekistan}</td>
+                                            <td className="p-4 text-center text-gray-500">{row.canada}</td>
                                             <td className="p-4 text-center text-gray-500">{row.uk}</td>
-                                            <td className="p-4 text-center text-gray-500">{row.usa}</td>
                                         </motion.tr>
                                     ))}
                                 </tbody>

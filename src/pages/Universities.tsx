@@ -6,7 +6,7 @@ import PageHero from '@/components/PageHero';
 import { UniversityCard } from '@/components/UniversityCard';
 import { universities } from '@/data/content';
 
-const countries = ['All', 'Georgia', 'Uzbekistan', 'UK'];
+const countries = ['All', 'Georgia', 'Uzbekistan', 'Canada', 'UK'];
 
 export default function Universities() {
     const [searchParams, setSearchParams] = useSearchParams();

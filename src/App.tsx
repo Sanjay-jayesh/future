@@ -9,6 +9,8 @@ import WhyGeorgia from '@/pages/WhyGeorgia';
 import Universities from '@/pages/Universities';
 import UniversityDetail from '@/pages/UniversityDetail';
 import SuccessStories from '@/pages/SuccessStories';
+import Gallery from '@/pages/Gallery';
+import Visa from '@/pages/Visa';
 import Contact from '@/pages/Contact';
 import FAQ from '@/pages/FAQ';
 import Blog from '@/pages/Blog';
@@ -28,6 +30,8 @@ function App() {
                         <Route path="/universities" element={<Universities />} />
                         <Route path="/universities/:id" element={<UniversityDetail />} />
                         <Route path="/success-stories" element={<SuccessStories />} />
+                        <Route path="/gallery" element={<Gallery />} />
+                        <Route path="/visa" element={<Visa />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/faq" element={<FAQ />} />
                         <Route path="/blog" element={<Blog />} />

@@ -8,6 +8,8 @@ const navLinks = [
     { to: '/about', label: 'About' },
     { to: '/why-georgia', label: 'Why Georgia' },
     { to: '/universities', label: 'Universities' },
+    { to: '/visa', label: 'Visa' },
+    { to: '/gallery', label: 'Gallery' },
     { to: '/success-stories', label: 'Success Stories' },
     { to: '/blog', label: 'Blog' },
     { to: '/faq', label: 'FAQs' },

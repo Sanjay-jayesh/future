@@ -44,7 +44,7 @@ export default function About() {
                             </p>
                             <p className="text-gray-400 leading-relaxed mb-6">
                                 Since 2018, we've helped over 2,500 students from India, Nigeria, the UAE, Kenya, and beyond
-                                find their place at universities in Georgia, Uzbekistan, Europe, and the UK. We don't just place
+                                find their place at universities in Georgia, Uzbekistan, Canada, and the UK. We don't just place
                                 students — we stay with them throughout their journey.
                             </p>
                             <div className="grid grid-cols-2 gap-4">

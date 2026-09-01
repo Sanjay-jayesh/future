@@ -72,7 +72,7 @@ export default function HeroCarousel() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.45 }}
                         >
-                            Your gateway to world-class education in Georgia, Uzbekistan, Europe, and the UK.
+                            Your gateway to world-class education in Georgia, Uzbekistan, Canada, and the UK.
                             From university selection to visa support — we handle it all, at no cost to you.
                         </motion.p>
 

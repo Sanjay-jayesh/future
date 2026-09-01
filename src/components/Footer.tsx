@@ -24,7 +24,7 @@ export default function Footer() {
                             </div>
                         </div>
                         <p className="text-sm leading-relaxed mb-4">
-                            Your trusted partner for studying in Georgia, Uzbekistan, Europe, and the UK. We turn your study-abroad dreams into reality.
+                            Your trusted partner for studying in Georgia, Uzbekistan, Canada, and the UK. We turn your study-abroad dreams into reality.
                         </p>
                         <div className="flex items-center gap-3">
                             <a href="#" className="w-9 h-9 rounded-lg bg-white/5 hover:bg-primary-600 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200">
@@ -49,6 +49,8 @@ export default function Footer() {
                                 { to: '/about', label: 'About Us' },
                                 { to: '/why-georgia', label: 'Why Study in Georgia' },
                                 { to: '/universities', label: 'Partner Universities' },
+                                { to: '/visa', label: 'Visa Guide' },
+                                { to: '/gallery', label: 'Events Gallery' },
                                 { to: '/success-stories', label: 'Success Stories' },
                                 { to: '/blog', label: 'Blog & Resources' },
                                 { to: '/faq', label: 'FAQs' },
@@ -70,9 +72,9 @@ export default function Footer() {
                                 { label: 'Study in Georgia', to: '/universities?country=Georgia' },
                                 { label: 'Study Medicine in Georgia', to: '/universities?country=Georgia' },
                                 { label: 'Study in Uzbekistan', to: '/universities?country=Uzbekistan' },
+                                { label: 'Study in Canada', to: '/universities?country=Canada' },
                                 { label: 'Study in the UK', to: '/universities?country=UK' },
-                                { label: 'Study in Europe', to: '/universities' },
-                                { label: 'Student Visa for Georgia', to: '/why-georgia' },
+                                { label: 'Student Visa for Georgia', to: '/visa' },
                             ].map((link) => (
                                 <li key={link.label}>
                                     <button onClick={() => handleNav(link.to)} className="hover:text-primary-400 transition-colors">{link.label}</button>
