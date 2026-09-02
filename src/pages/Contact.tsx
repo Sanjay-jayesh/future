@@ -1,13 +1,44 @@
-import { Phone, Mail, MapPin, Clock, MessageCircle, Send, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, MessageCircle, Send, Facebook, Instagram, Linkedin, Navigation, Building2 } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import EnquiryForm from '@/components/EnquiryForm';
-import { Reveal, StaggerGroup, StaggerItem, motion, fadeInUp, scaleIn, slideInLeft, slideInRight } from '@/lib/motion';
+import { Reveal, StaggerGroup, StaggerItem, motion, fadeInUp, slideInLeft, slideInRight } from '@/lib/motion';
 
 const contactInfo = [
     { icon: MapPin, title: 'Visit Us', lines: ['17 Vake Park', 'Tbilisi 0179, Georgia'], color: 'primary' },
     { icon: Phone, title: 'Call Us', lines: ['+995 555 123 456', 'Mon–Sat, 9am–7pm GST'], color: 'accent' },
     { icon: Mail, title: 'Email Us', lines: ['hello@futurefactory.ge', 'We reply within 24 hours'], color: 'secondary' },
     { icon: Clock, title: 'Office Hours', lines: ['Monday – Friday: 9am – 7pm', 'Saturday: 10am – 4pm'], color: 'success' },
+];
+
+const offices = [
+    {
+        city: 'Tbilisi',
+        country: 'Georgia',
+        address: ['Street address line 1', 'Tbilisi, Georgia'],
+        phone: '+995 555 123 456',
+        mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Tbilisi+Georgia',
+    },
+    {
+        city: 'Samarkand',
+        country: 'Uzbekistan',
+        address: ['Street address line 1', 'Samarkand, Uzbekistan'],
+        phone: '+998 71 123 4567',
+        mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Samarkand+Uzbekistan',
+    },
+    {
+        city: 'Toronto',
+        country: 'Canada',
+        address: ['Street address line 1', 'Toronto, ON, Canada'],
+        phone: '+1 416 555 0199',
+        mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Toronto+Canada',
+    },
+    {
+        city: 'London',
+        country: 'United Kingdom',
+        address: ['Street address line 1', 'London, United Kingdom'],
+        phone: '+44 20 7946 0999',
+        mapsUrl: 'https://www.google.com/maps/search/?api=1&query=London+United+Kingdom',
+    },
 ];
 
 const colorMap: Record<string, { bg: string; text: string; hoverBg: string; hoverText: string }> = {
@@ -52,6 +83,60 @@ export default function Contact() {
                             );
                         })}
                     </StaggerGroup>
+
+                    <Reveal className="mb-16" amount={0.1}>
+                        <div className="text-center mb-10">
+                            <span className="section-label mb-4">Our Offices</span>
+                            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-3">
+                                Visit Us Across the Globe
+                            </h2>
+                            <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                                Future Factory has offices in four countries — click any location to open it in Google Maps and get directions.
+                            </p>
+                        </div>
+
+                        <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" fast>
+                            {offices.map((office) => (
+                                <StaggerItem key={office.city} variants={fadeInUp}>
+                                    <motion.a
+                                        href={office.mapsUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        whileHover={{ y: -8 }}
+                                        whileTap={{ scale: 0.97 }}
+                                        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                                        className="card p-6 group block h-full cursor-pointer"
+                                    >
+                                        <div className="flex items-center justify-between mb-5">
+                                            <div className="w-12 h-12 rounded-2xl bg-primary-600/15 text-primary-400 group-hover:bg-primary-600 group-hover:text-white flex items-center justify-center transition-all duration-300">
+                                                <Building2 className="w-6 h-6" />
+                                            </div>
+                                            <span className="flex items-center gap-1.5 text-xs font-medium text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                <Navigation className="w-3.5 h-3.5" />
+                                                Open Map
+                                            </span>
+                                        </div>
+
+                                        <h3 className="font-display font-bold text-xl text-white mb-0.5">{office.city}</h3>
+                                        <p className="text-xs font-medium uppercase tracking-wider text-primary-400 mb-4">{office.country}</p>
+
+                                        <div className="space-y-1 mb-4">
+                                            {office.address.map((line, j) => (
+                                                <p key={j} className="text-sm text-gray-400">{line}</p>
+                                            ))}
+                                        </div>
+
+                                        <div className="pt-4 border-t border-gray-800">
+                                            <p className="flex items-center gap-2 text-sm text-gray-400">
+                                                <Phone className="w-4 h-4 text-primary-400 shrink-0" />
+                                                {office.phone}
+                                            </p>
+                                        </div>
+                                    </motion.a>
+                                </StaggerItem>
+                            ))}
+                        </StaggerGroup>
+                    </Reveal>
 
                     <div className="grid lg:grid-cols-2 gap-12 items-start">
                         <Reveal variants={slideInLeft}>
@@ -117,24 +202,7 @@ export default function Contact() {
                 </div>
             </section>
 
-            <Reveal className="pb-20" amount={0.1}>
-                <div className="container-page">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.97 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="rounded-2xl overflow-hidden shadow-sm border border-gray-800 h-96"
-                    >
-                        <iframe
-                            title="Future Factory Location"
-                            src="https://www.openstreetmap.org/export/embed.html?bbox=44.7%2C41.69%2C44.85%2C41.73&amp;layer=mapnik"
-                            className="w-full h-full"
-                            loading="lazy"
-                        />
-                    </motion.div>
-                </div>
-            </Reveal>
+
         </>
     );
 }

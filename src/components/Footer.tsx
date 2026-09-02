@@ -1,5 +1,5 @@
-import { useNavigate, Link } from 'react-router-dom';
-import { GraduationCap, Phone, Mail, MapPin, MessageCircle, Facebook, Instagram, Linkedin, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Phone, Mail, MapPin, MessageCircle, Facebook, Instagram, Linkedin, ArrowRight } from 'lucide-react';
 
 export default function Footer() {
     const navigate = useNavigate();
@@ -14,14 +14,12 @@ export default function Footer() {
             <div className="container-page py-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                     <div>
-                        <div className="flex items-center gap-2.5 mb-4">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-600 to-accent-500 flex items-center justify-center text-white">
-                                <GraduationCap className="w-5 h-5" />
-                            </div>
-                            <div>
-                                <p className="font-display font-bold text-lg text-white">Future Factory</p>
-                                <p className="text-[10px] font-medium tracking-wider uppercase text-gray-500">Study Abroad Consultancy</p>
-                            </div>
+                        <div className="mb-4">
+                            <img
+                                src="/assets/images/futurefactory_white.png"
+                                alt="Future Factory"
+                                className="w-36 h-auto"
+                            />
                         </div>
                         <p className="text-sm leading-relaxed mb-4">
                             Your trusted partner for studying in Georgia, Uzbekistan, Canada, and the UK. We turn your study-abroad dreams into reality.

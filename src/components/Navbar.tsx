@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, GraduationCap } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
@@ -51,23 +51,22 @@ export default function Navbar() {
                 }`}
         >
             <nav className="container-page flex items-center justify-between h-16 lg:h-20">
-                <button onClick={handleLogoClick} className="flex items-center gap-2.5 group">
-                    <motion.div
-                        whileHover={{ scale: 1.08, rotate: -5 }}
-                        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                        className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-600 to-accent-500 flex items-center justify-center text-white shadow-lg shadow-primary-600/20"
-                    >
-                        <GraduationCap className="w-5 h-5" />
-                    </motion.div>
-                    <div className="flex flex-col leading-none">
-                        <span className="font-display font-bold text-lg text-white transition-colors">
-                            Future Factory
-                        </span>
-                        <span className="text-[10px] font-medium tracking-wider uppercase text-gray-400 transition-colors">
-                            Study Abroad Consultancy
-                        </span>
-                    </div>
-                </button>
+                <motion.button
+                    onClick={handleLogoClick}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                    className="flex items-center group"
+                    aria-label="Future Factory home"
+                >
+                    <span className="w-28 sm:w-32 lg:w-36 h-12 flex items-center justify-center">
+                        <img
+                            src="/assets/images/futurefactory_white.png"
+                            alt="Future Factory"
+                            className="w-full h-full object-contain"
+                        />
+                    </span>
+                </motion.button>
 
                 <div className="hidden lg:flex items-center gap-1">
                     {navLinks.map((link) => (

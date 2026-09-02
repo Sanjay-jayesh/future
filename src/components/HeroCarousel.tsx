@@ -55,12 +55,13 @@ export default function HeroCarousel() {
                         </motion.div>
 
                         <motion.h1
+                            key={current}
                             className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white text-shadow-lg leading-[1.05]"
                             initial={{ opacity: 0, y: 24 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                         >
-                            Study in Georgia with{' '}
+                            Study in {heroSlides[current].label} with{' '}
                             <span className="bg-gradient-to-r from-secondary-400 to-accent-400 bg-clip-text text-transparent">
                                 Expert Guidance
                             </span>
