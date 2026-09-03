@@ -47,6 +47,7 @@ export default function Footer() {
                                 { to: '/about', label: 'About Us' },
                                 { to: '/why-georgia', label: 'Why Study in Georgia' },
                                 { to: '/universities', label: 'Partner Universities' },
+                                { to: '/mbbs-nursing', label: 'MBBS & Nursing' },
                                 { to: '/visa', label: 'Visa Guide' },
                                 { to: '/gallery', label: 'Events Gallery' },
                                 { to: '/success-stories', label: 'Success Stories' },
@@ -68,10 +69,10 @@ export default function Footer() {
                         <ul className="space-y-2.5 text-sm">
                             {[
                                 { label: 'Study in Georgia', to: '/universities?country=Georgia' },
-                                { label: 'Study Medicine in Georgia', to: '/universities?country=Georgia' },
+                                { label: 'MBBS in Georgia', to: '/mbbs-nursing' },
+                                { label: 'Nursing in Georgia', to: '/mbbs-nursing' },
                                 { label: 'Study in Uzbekistan', to: '/universities?country=Uzbekistan' },
                                 { label: 'Study in Canada', to: '/universities?country=Canada' },
-                                { label: 'Study in the UK', to: '/universities?country=UK' },
                                 { label: 'Student Visa for Georgia', to: '/visa' },
                             ].map((link) => (
                                 <li key={link.label}>

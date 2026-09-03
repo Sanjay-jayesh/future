@@ -8,6 +8,7 @@ const navLinks = [
     { to: '/about', label: 'About' },
     { to: '/why-georgia', label: 'Why Georgia' },
     { to: '/universities', label: 'Universities' },
+    { to: '/mbbs-nursing', label: 'MBBS & Nursing' },
     { to: '/visa', label: 'Visa' },
     { to: '/gallery', label: 'Gallery' },
     { to: '/success-stories', label: 'Success Stories' },
@@ -59,13 +60,11 @@ export default function Navbar() {
                     className="flex items-center group"
                     aria-label="Future Factory home"
                 >
-                    <span className="w-28 sm:w-32 lg:w-36 h-12 flex items-center justify-center">
-                        <img
-                            src="/assets/images/futurefactory_white.png"
-                            alt="Future Factory"
-                            className="w-full h-full object-contain"
-                        />
-                    </span>
+                    <img
+                        src="/assets/images/futurefactory_white.png"
+                        alt="Future Factory"
+                        className="w-28 sm:w-32 lg:w-36 h-auto"
+                    />
                 </motion.button>
 
                 <div className="hidden lg:flex items-center gap-1">

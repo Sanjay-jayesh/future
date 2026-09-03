@@ -8,6 +8,7 @@ import About from '@/pages/About';
 import WhyGeorgia from '@/pages/WhyGeorgia';
 import Universities from '@/pages/Universities';
 import UniversityDetail from '@/pages/UniversityDetail';
+import MbbsNursing from '@/pages/MbbsNursing';
 import SuccessStories from '@/pages/SuccessStories';
 import Gallery from '@/pages/Gallery';
 import Visa from '@/pages/Visa';
@@ -29,6 +30,7 @@ function App() {
                         <Route path="/why-georgia" element={<WhyGeorgia />} />
                         <Route path="/universities" element={<Universities />} />
                         <Route path="/universities/:id" element={<UniversityDetail />} />
+                        <Route path="/mbbs-nursing" element={<MbbsNursing />} />
                         <Route path="/success-stories" element={<SuccessStories />} />
                         <Route path="/gallery" element={<Gallery />} />
                         <Route path="/visa" element={<Visa />} />
