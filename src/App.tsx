@@ -5,6 +5,7 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 import ScrollToTop from '@/components/ScrollToTop';
 import Home from '@/pages/Home';
 import About from '@/pages/About';
+import Founder from '@/pages/Founder';
 import WhyGeorgia from '@/pages/WhyGeorgia';
 import Universities from '@/pages/Universities';
 import UniversityDetail from '@/pages/UniversityDetail';
@@ -27,6 +28,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/about" element={<About />} />
+                        <Route path="/founder" element={<Founder />} />
                         <Route path="/why-georgia" element={<WhyGeorgia />} />
                         <Route path="/universities" element={<Universities />} />
                         <Route path="/universities/:id" element={<UniversityDetail />} />

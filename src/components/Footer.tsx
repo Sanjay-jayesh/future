@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Phone, Mail, MapPin, MessageCircle, Facebook, Instagram, Linkedin, ArrowRight } from 'lucide-react';
+import { Phone, Mail, MapPin, MessageCircle, Facebook, Instagram, Youtube, ArrowRight } from 'lucide-react';
 
 export default function Footer() {
     const navigate = useNavigate();
@@ -25,16 +25,16 @@ export default function Footer() {
                             Your trusted partner for studying in Georgia, Uzbekistan, Canada, and the UK. We turn your study-abroad dreams into reality.
                         </p>
                         <div className="flex items-center gap-3">
-                            <a href="#" className="w-9 h-9 rounded-lg bg-white/5 hover:bg-primary-600 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200">
+                            <a href="https://www.facebook.com/futurefactory.ge" target='_blank' className="w-9 h-9 rounded-lg bg-white/5 hover:bg-primary-600 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200">
                                 <Facebook className="w-4 h-4" />
                             </a>
-                            <a href="#" className="w-9 h-9 rounded-lg bg-white/5 hover:bg-primary-600 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200">
+                            <a href="https://www.instagram.com/futurefactory.in/" target='_blank' className="w-9 h-9 rounded-lg bg-white/5 hover:bg-primary-600 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200">
                                 <Instagram className="w-4 h-4" />
                             </a>
-                            <a href="#" className="w-9 h-9 rounded-lg bg-white/5 hover:bg-primary-600 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200">
-                                <Linkedin className="w-4 h-4" />
+                            <a href="https://www.youtube.com/@Futurefactoryedu" target='_blank' className="w-9 h-9 rounded-lg bg-white/5 hover:bg-primary-600 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200">
+                                <Youtube className="w-4 h-4" />
                             </a>
-                            <a href="https://wa.me/995555123456" className="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#25D366] flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200">
+                            <a href="https://wa.me/919447349896" target='_blank' className="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#25D366] flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200">
                                 <MessageCircle className="w-4 h-4" />
                             </a>
                         </div>
@@ -91,7 +91,7 @@ export default function Footer() {
                             </li>
                             <li className="flex items-center gap-3">
                                 <Phone className="w-4 h-4 text-primary-400 shrink-0" />
-                                <a href="tel:+995555123456" className="hover:text-primary-400 transition-colors">+995 555 123 456</a>
+                                <a href="tel:+91-9447349896" className="hover:text-primary-400 transition-colors">+91 94473 49896</a>
                             </li>
                             <li className="flex items-center gap-3">
                                 <Mail className="w-4 h-4 text-primary-400 shrink-0" />

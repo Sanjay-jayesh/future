@@ -1,13 +1,13 @@
-import { Phone, Mail, MapPin, Clock, MessageCircle, Send, Facebook, Instagram, Linkedin, Navigation, Building2 } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, MessageCircle, Send, Facebook, Instagram, Youtube, Navigation, Building2 } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import EnquiryForm from '@/components/EnquiryForm';
 import { Reveal, StaggerGroup, StaggerItem, motion, fadeInUp, slideInLeft, slideInRight } from '@/lib/motion';
 
 const contactInfo = [
     { icon: MapPin, title: 'Visit Us', lines: ['17 Vake Park', 'Tbilisi 0179, Georgia'], color: 'primary' },
-    { icon: Phone, title: 'Call Us', lines: ['+995 555 123 456', 'Mon–Sat, 9am–7pm GST'], color: 'accent' },
-    { icon: Mail, title: 'Email Us', lines: ['hello@futurefactory.ge', 'We reply within 24 hours'], color: 'secondary' },
-    { icon: Clock, title: 'Office Hours', lines: ['Monday – Friday: 9am – 7pm', 'Saturday: 10am – 4pm'], color: 'success' },
+    { icon: Phone, title: 'Call Us', lines: ['+91 94473 49896', 'Mon–Fri, 9am–6pm IST'], color: 'accent' },
+    { icon: Mail, title: 'Email Us', lines: ['hello@futurefactory.com', 'We reply within 24 hours'], color: 'secondary' },
+    { icon: Clock, title: 'Office Hours', lines: ['Monday – Friday: 9am – 6pm'], color: 'success' },
 ];
 
 const offices = [
@@ -152,7 +152,7 @@ export default function Contact() {
                             <StaggerGroup className="space-y-4" fast>
                                 {[
                                     { href: 'https://wa.me/995555123456?text=Hi%20Future%20Factory,%20I%27d%20like%20to%20book%20a%20free%20consultation', bg: 'bg-[#25D366]/5', border: 'border-[#25D366]/20', hover: 'hover:bg-[#25D366]/10', iconBg: 'bg-[#25D366]', icon: <MessageCircle className="w-6 h-6" />, title: 'Chat on WhatsApp', subtitle: 'Fastest response — typically within minutes', trailing: <Send className="w-5 h-5 text-gray-500 group-hover:text-[#25D366] transition-colors" /> },
-                                    { href: 'tel:+995555123456', bg: 'bg-primary-600/5', border: 'border-primary-600/20', hover: 'hover:bg-primary-600/10', iconBg: 'bg-primary-600', icon: <Phone className="w-6 h-6" />, title: 'Call Us Directly', subtitle: '+995 555 123 456', trailing: null },
+                                    { href: 'tel:+91-9447349896', bg: 'bg-primary-600/5', border: 'border-primary-600/20', hover: 'hover:bg-primary-600/10', iconBg: 'bg-primary-600', icon: <Phone className="w-6 h-6" />, title: 'Call Us Directly', subtitle: '+91 94473 49896', trailing: null },
                                     { href: 'mailto:hello@futurefactory.ge', bg: 'bg-accent-500/5', border: 'border-accent-500/20', hover: 'hover:bg-accent-500/10', iconBg: 'bg-accent-600', icon: <Mail className="w-6 h-6" />, title: 'Email Us', subtitle: 'hello@futurefactory.ge', trailing: null },
                                 ].map((item, i) => (
                                     <StaggerItem key={i} variants={fadeInUp}>
@@ -180,10 +180,17 @@ export default function Contact() {
                             <div className="mt-8">
                                 <p className="text-sm font-medium text-gray-300 mb-3">Follow us on social media</p>
                                 <div className="flex items-center gap-3">
-                                    {[Facebook, Instagram, Linkedin].map((Icon, i) => (
+                                    {[
+                                        { Icon: Facebook, href: 'https://www.facebook.com/futurefactory.ge', label: 'Facebook' },
+                                        { Icon: Instagram, href: 'https://www.instagram.com/futurefactory.in/', label: 'Instagram' },
+                                        { Icon: Youtube, href: 'https://www.youtube.com/@Futurefactoryedu', label: 'YouTube' },
+                                    ].map(({ Icon, href, label }) => (
                                         <motion.a
-                                            key={i}
-                                            href="#"
+                                            key={label}
+                                            href={href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={label}
                                             whileHover={{ scale: 1.1, y: -2 }}
                                             whileTap={{ scale: 0.95 }}
                                             className="w-10 h-10 rounded-xl bg-gray-800 hover:bg-primary-600 flex items-center justify-center text-gray-400 hover:text-white transition-all"
