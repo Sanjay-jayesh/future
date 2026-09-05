@@ -37,7 +37,7 @@ export default function Universities() {
             <PageHero
                 label="Our Partners"
                 title="Universities We Partner With"
-                subtitle="Explore our network of trusted universities across Georgia, Uzbekistan, and the UK. Each offers globally recognised programs tailored to international students."
+                subtitle="Explore our network of trusted universities across Georgia, Uzbekistan, Canada, and the UK. Each offers globally recognised programs tailored to international students."
                 image="https://images.pexels.com/photos/11932106/pexels-photo-11932106.jpeg?auto=compress&cs=tinysrgb&w=1920"
                 breadcrumb={[{ label: 'Home', to: '/' }, { label: 'Universities' }]}
             />

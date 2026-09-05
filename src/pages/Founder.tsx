@@ -7,6 +7,29 @@ import {
 import PageHero from '@/components/PageHero';
 import { Reveal, StaggerGroup, StaggerItem, motion, fadeInUp } from '@/lib/motion';
 
+const founders = [
+    {
+        name: 'Thabsheer Thabshi Machan',
+        role: 'Founder & CEO',
+        image: '/assets/images/Founder.jpg',
+        bio: [
+            'When I set out to study abroad over a decade ago, the process was overwhelming. Endless paperwork, confusing visa requirements, universities I had never heard of, and no one to turn to for honest advice. I made it through — but I realised thousands of talented students were giving up on their dreams simply because they did not have the right guidance.',
+            'That is why I founded Future Factory. Not as a business, but as a mission — to make quality international education accessible to every student, regardless of their background or budget. We started small, with a single office in Tbilisi and three university partners. Today, we have four offices across the globe and have helped over 2,500 students achieve their dreams.',
+        ],
+        quote: 'Education is the only investment that guarantees a return — not just in careers, but in lives changed, horizons broadened, and futures rewritten. Every student we help is a family we empower.',
+    },
+    {
+        name: 'Afsal Pun',
+        role: 'Co-Founder',
+        image: '/assets/images/CoFounder.jpg',
+        bio: [
+            'I have always believed that talent is evenly distributed across the world, but opportunity is not. Growing up, I saw brilliant classmates abandon their ambitions simply because they could not navigate the complexities of applying abroad. That inequality stayed with me and eventually became the driving force behind co-founding Future Factory.',
+            'Together with Thabsheer, we built Future Factory to be the guide we wished we had — transparent, genuinely student-first, and committed for the long haul. From building university partnerships to ensuring every student feels supported on day one, my focus is on making sure no aspiring student ever has to settle for less than their potential.',
+        ],
+        quote: 'Talent is everywhere, but opportunity is not. Our job is to bridge that gap — one student, one family, one dream at a time.',
+    },
+];
+
 const milestones = [
     { year: '2015', title: 'The Spark', desc: 'After years of helping friends navigate study abroad, the idea for Future Factory was born — a consultancy that puts students first.' },
     { year: '2017', title: 'First Office in Tbilisi', desc: 'Opened the first Future Factory office in Tbilisi, Georgia, partnering with three Georgian universities.' },
@@ -35,77 +58,67 @@ export default function Founder() {
         <>
             <PageHero
                 label="Leadership"
-                title="Meet the Founder"
+                title="Meet Our Founders"
                 subtitle="The vision and passion behind Future Factory — a journey of turning dreams of studying abroad into reality for thousands of students."
                 image="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1920"
-                breadcrumb={[{ label: 'Home', to: '/' }, { label: 'Founder' }]}
+                breadcrumb={[{ label: 'Home', to: '/' }, { label: 'Founders' }]}
             />
 
-            {/* Founder intro */}
+            {/* Founder profiles */}
             <section className="py-16 lg:py-24">
-                <div className="container-page">
-                    <div className="grid lg:grid-cols-5 gap-12 items-center">
-                        <Reveal className="lg:col-span-2">
-                            <div className="relative">
-                                <div className="absolute -inset-4 bg-gradient-to-br from-primary-600/20 to-accent-500/20 rounded-3xl blur-2xl opacity-50" />
-                                <div className="relative rounded-2xl overflow-hidden border border-gray-800">
-                                    <img
-                                        src="/assets/images/Founder.jpg"
-                                        alt="Founder of Future Factory"
-                                        className="w-full h-auto"
-                                    />
+                <div className="container-page space-y-20 lg:space-y-28">
+                    {founders.map((person, idx) => (
+                        <div key={person.name} className="grid lg:grid-cols-5 gap-12 items-center">
+                            <Reveal className={`lg:col-span-2 ${idx % 2 === 1 ? 'lg:order-2' : ''}`}>
+                                <div className="relative">
+                                    <div className="absolute -inset-4 bg-gradient-to-br from-primary-600/20 to-accent-500/20 rounded-3xl blur-2xl opacity-50" />
+                                    <div className="relative rounded-2xl overflow-hidden border border-gray-800 aspect-[3/4]">
+                                        <img
+                                            src={person.image}
+                                            alt={person.name}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    <div className="absolute -bottom-5 -right-5 bg-gray-900/95 backdrop-blur-md border border-gray-700/80 rounded-xl px-5 py-3 shadow-2xl z-10">
+                                        <p className="text-primary-400 font-extrabold font-display text-lg tracking-wide drop-shadow-sm">
+                                            {person.role}
+                                        </p>
+                                        <p className="text-gray-200 font-medium text-xs tracking-wider uppercase mt-0.5">
+                                            {person.name}
+                                        </p>
+                                    </div>
                                 </div>
-                                <div className="absolute -bottom-5 -right-5 bg-gray-900/95 backdrop-blur-md border border-gray-700/80 rounded-xl px-5 py-3 shadow-2xl z-10">
-                                    <p className="text-primary-400 font-extrabold font-display text-lg tracking-wide drop-shadow-sm">
-                                        Founder & CEO
-                                    </p>
-                                    <p className="text-gray-200 font-medium text-xs tracking-wider uppercase mt-0.5">
-                                        Future Factory
-                                    </p>
+                            </Reveal>
+
+                            <Reveal className={`lg:col-span-3 ${idx % 2 === 1 ? 'lg:order-1' : ''}`} delay={0.15}>
+                                <span className="section-label mb-4">
+                                    {idx === 0 ? 'The Story Behind Future Factory' : 'Building the Bridge'}
+                                </span>
+                                <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+                                    {person.name}
+                                </h2>
+                                <div className="space-y-4 text-gray-400 leading-relaxed">
+                                    {person.bio.map((para, i) => (
+                                        <p key={i}>{para}</p>
+                                    ))}
                                 </div>
-                            </div>
-                        </Reveal>
 
-                        <Reveal className="lg:col-span-3" delay={0.15}>
-                            <span className="section-label mb-4">The Story Behind Future Factory</span>
-                            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
-                                A Vision Born from Personal Experience
-                            </h2>
-                            <div className="space-y-4 text-gray-400 leading-relaxed">
-                                <p>
-                                    When I set out to study abroad over a decade ago, the process was overwhelming. Endless paperwork,
-                                    confusing visa requirements, universities I'd never heard of, and no one to turn to for honest advice.
-                                    I made it through — but I realised thousands of talented students were giving up on their dreams
-                                    simply because they didn't have the right guidance.
-                                </p>
-                                <p>
-                                    That's why I founded Future Factory. Not as a business, but as a mission — to make quality
-                                    international education accessible to every student, regardless of their background or budget.
-                                    We started small, with a single office in Tbilisi and three university partners. Today, we have
-                                    four offices across the globe and have helped over 2,500 students achieve their dreams.
-                                </p>
-                                <p>
-                                    What sets us apart is simple: we've been there. We understand the anxiety, the excitement, and the
-                                    challenges. And we're with you — not just until you get your visa, but until you're settled,
-                                    comfortable, and thriving in your new home.
-                                </p>
-                            </div>
-
-                            <div className="flex items-center gap-3 mt-8">
-                                {[Linkedin, Mail, Phone].map((Icon, i) => (
-                                    <motion.a
-                                        key={i}
-                                        href="#"
-                                        whileHover={{ scale: 1.1, y: -2 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="w-10 h-10 rounded-xl bg-gray-800 hover:bg-primary-600 flex items-center justify-center text-gray-400 hover:text-white transition-all"
-                                    >
-                                        <Icon className="w-5 h-5" />
-                                    </motion.a>
-                                ))}
-                            </div>
-                        </Reveal>
-                    </div>
+                                <div className="flex items-center gap-3 mt-8">
+                                    {[Linkedin, Mail, Phone].map((Icon, i) => (
+                                        <motion.a
+                                            key={i}
+                                            href="#"
+                                            whileHover={{ scale: 1.1, y: -2 }}
+                                            whileTap={{ scale: 0.95 }}
+                                            className="w-10 h-10 rounded-xl bg-gray-800 hover:bg-primary-600 flex items-center justify-center text-gray-400 hover:text-white transition-all"
+                                        >
+                                            <Icon className="w-5 h-5" />
+                                        </motion.a>
+                                    ))}
+                                </div>
+                            </Reveal>
+                        </div>
+                    ))}
                 </div>
             </section>
 
@@ -116,10 +129,10 @@ export default function Founder() {
                     <Reveal className="max-w-4xl mx-auto text-center">
                         <Quote className="w-12 h-12 text-primary-500/40 mx-auto mb-6" />
                         <p className="text-2xl lg:text-3xl font-display text-white leading-relaxed mb-6">
-                            "Education is the only investment that guarantees a return — not just in careers, but in lives changed,
-                            horizons broadened, and futures rewritten. Every student we help is a family we empower."
+                            "Talent is everywhere, but opportunity is not. Our job is to bridge that gap — one student,
+                            one family, one dream at a time."
                         </p>
-                        <p className="text-primary-400 font-semibold text-lg">— Founder, Future Factory</p>
+                        <p className="text-primary-400 font-semibold text-lg">— Afsal Pun, Co-Founder</p>
                     </Reveal>
                 </div>
             </section>
