@@ -9,7 +9,7 @@ import { Reveal, StaggerGroup, StaggerItem, motion, fadeInUp } from '@/lib/motio
 
 const founders = [
     {
-        name: 'Thabsheer Thabshi Machan',
+        name: 'Thabsheer (Thabshi Machan)',
         role: 'Founder & CEO',
         image: '/assets/images/Founder.jpg',
         bio: [
